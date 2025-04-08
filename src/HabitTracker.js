@@ -1,20 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import ReactCalendarHeatmap from "react-calendar-heatmap";
+import { NameContext } from "./App";
 
 export default function HabitTracker() {
   const [habits, setHabits] = useState([]);
   const [habitInput, setHabitInput] = useState("");
-
-  const [name, setName] = useState("");
+  const [name, setName] = useContext(NameContext);
+  //   const [name, setName] = useState("");
   const [nameInput, setNameInput] = useState("");
 
   useEffect(() => {
+    // Get name
     const storedUserName = localStorage.getItem("habitTrackerUserName");
     if (storedUserName) {
       setName(storedUserName);
     }
 
+    // Get habbits
     const storedHabits = localStorage.getItem("habitTrackerHabits");
     if (storedHabits) {
       setHabits(JSON.parse(storedHabits));
@@ -60,12 +63,10 @@ export default function HabitTracker() {
   return (
     <div>
       <div>
-        {name ? (
-          `Hello,   ${name}!`
-        ) : (
+        {!name && (
           <div className="card">
             <p>
-              Welcome to Habit Tracker. <br />
+              {/* Welcome to Habit Tracker. <br /> */}
               Please enter your name to get started:
             </p>
             <form
