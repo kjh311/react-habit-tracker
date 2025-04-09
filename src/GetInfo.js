@@ -2,6 +2,10 @@ import { useEffect } from "react";
 
 const GetInfo = ({ habits, setHabits, setName, setLoading }) => {
   useEffect(() => {
+    // *** Delete LocalStorage info ***
+    // localStorage.removeItem("habitTrackerHabits");
+    // localStorage.removeItem("habitTrackerUserName");
+
     // Get name
     const storedUserName = localStorage.getItem("habitTrackerUserName");
     if (storedUserName) {
@@ -14,11 +18,6 @@ const GetInfo = ({ habits, setHabits, setName, setLoading }) => {
       setHabits(JSON.parse(storedHabits));
     }
 
-    // Delete LocalStorage info
-    // localStorage.removeItem("habitTrackerHabits");
-    // localStorage.removeItem("habitTrackerUserName");
-
-    console.log("Habits", habits);
     setLoading(false);
   }, []);
 

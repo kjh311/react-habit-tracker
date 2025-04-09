@@ -1,4 +1,3 @@
-import axios from "axios";
 import ReactCalendarHeatmap from "react-calendar-heatmap";
 import DeleteHabit from "./DeleteHabit";
 
@@ -6,19 +5,20 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
   return (
     <>
       {!loading && (
-        <div className="card">
+        <div>
           {habits.length > 0
             ? habits.map((habit, id) => (
-                <div key={id}>
+                <div key={id} className="card">
                   <DeleteHabit
                     id={habit.id}
                     habits={habits}
                     setHabits={setHabits}
                   />
-                  {habit.name}, ID: {habit.id}
+                  Name: {habit.name} <br />
+                  id: {habit.id}
                 </div>
               ))
-            : "No Habits"}
+            : ""}
         </div>
       )}
     </>

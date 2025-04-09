@@ -10,7 +10,7 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
 
     const newHabit = {
       id: Date.now(),
-      name: habitInput.trim(),
+      name: habitInput.trim().toUpperCase(),
     };
 
     const updatedHabits = [...habits, newHabit];
