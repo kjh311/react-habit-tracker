@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { NameContext } from "./App";
 
-export default function AddUserName() {
+export default function AddUserName({ loading }) {
   const [name, setName] = useContext(NameContext);
   const [nameInput, setNameInput] = useState("");
 
@@ -18,7 +18,7 @@ export default function AddUserName() {
 
   return (
     <div>
-      {!name && (
+      {!loading && !name && (
         <div className="card">
           <p>
             {/* Welcome to Habit Tracker. <br /> */}

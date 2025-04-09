@@ -8,16 +8,22 @@ import GetInfo from "./GetInfo";
 export default function HabitTracker() {
   const [habits, setHabits] = useState([]);
   const [name, setName] = useContext(NameContext);
+  const [loading, setLoading] = useState(true);
 
   return (
     <div>
-      <GetInfo habits={habits} setHabits={setHabits} setName={setName} />
+      <GetInfo
+        habits={habits}
+        setHabits={setHabits}
+        setName={setName}
+        setLoading={setLoading}
+      />
 
-      <AddUserName />
+      <AddUserName loading={loading} />
 
-      <AddUserHabits habits={habits} setHabits={setHabits} />
+      <AddUserHabits habits={habits} setHabits={setHabits} loading={loading} />
 
-      <ShowHabits habits={habits} />
+      <ShowHabits habits={habits} loading={loading} />
     </div>
   );
 }
