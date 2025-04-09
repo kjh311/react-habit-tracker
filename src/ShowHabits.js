@@ -59,14 +59,27 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
                       : `color-scale-${Math.min(value.count, 4)} border-square`
                   }
                 />
+                <br />
+                <ul className="inline ">
+                  <li className="less">Less</li>
+                  <li className="square color-square-empty"></li>
+                  <li className="square color-square-1"></li>
+                  <li className="square color-square-2"></li>
+                  <li className="square color-square-3"></li>
+                  <li className="square color-square-4"></li>
+                  <li>More</li>
+                </ul>
 
+                <br />
                 {/* Button to mark the habit as completed for today */}
-                <button
-                  className="p-2 m-2 border rounded-lg bg-green-400 hover:bg-green-700 hover:text-white"
-                  onClick={() => markAsCompleted(habit.id)}
-                >
-                  Mark as Completed Today
-                </button>
+                <div>
+                  <button
+                    className="p-2 m-2 border rounded-lg bg-green-400 hover:bg-green-700 hover:text-white"
+                    onClick={() => markAsCompleted(habit.id)}
+                  >
+                    Mark as Completed Today
+                  </button>
+                </div>
               </div>
             ))}
         </div>
