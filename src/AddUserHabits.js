@@ -11,6 +11,7 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
     const newHabit = {
       id: Date.now(),
       name: habitInput.trim().toUpperCase(),
+      calendar: [],
     };
 
     const updatedHabits = [...habits, newHabit];
