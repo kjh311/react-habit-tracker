@@ -23,7 +23,7 @@ export default function HabitTracker() {
 
       <AddUserHabits habits={habits} setHabits={setHabits} loading={loading} />
 
-      <ShowHabits habits={habits} loading={loading} />
+      <ShowHabits habits={habits} loading={loading} setHabits={setHabits} />
     </div>
   );
 }
