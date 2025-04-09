@@ -24,7 +24,7 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
   return (
     <div>
       {!loading ? (
-        <form className="card" onSubmit={handleAddHabit}>
+        <form className="card " onSubmit={handleAddHabit}>
           <input
             type="text"
             className="border rounded-lg p-2 m-2 text-center"
