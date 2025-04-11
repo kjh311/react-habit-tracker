@@ -1,0 +1,32 @@
+export default function MarkAsCompleted({ habit, setHabits, today }) {
+  const markAsCompleted = () => {
+    const updatedHabits =
+      JSON.parse(localStorage.getItem("habitTrackerHabits")) || [];
+
+    const updated = updatedHabits.map((h) => {
+      if (h.id === habit.id) {
+        if (!h.calendar) h.calendar = [];
+
+        const todayEntry = h.calendar.find((entry) => entry.date === today);
+        if (todayEntry) {
+          todayEntry.count += 1;
+        } else {
+          h.calendar.push({ date: today, count: 1 });
+        }
+      }
+      return h;
+    });
+
+    localStorage.setItem("habitTrackerHabits", JSON.stringify(updated));
+    setHabits(updated);
+  };
+
+  return (
+    <button
+      className="p-2 m-2 border rounded-lg bg-green-400 hover:bg-green-700 hover:text-white"
+      onClick={markAsCompleted}
+    >
+      Mark as Completed Today
+    </button>
+  );
+}

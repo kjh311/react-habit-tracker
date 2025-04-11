@@ -17,3 +17,7 @@
   stroke: #fff;
   stroke-width: 1px;
 }
+
+svg.react-calendar-heatmap {
+  display: inline !important;
+}
