@@ -1,14 +1,23 @@
+import { useState } from "react";
 import ReactCalendarHeatmap from "react-calendar-heatmap";
 import DeleteHabit from "./DeleteHabit";
 import "react-calendar-heatmap/dist/styles.css";
 import "./heatmap-custom.css";
 import MarkAsCompleted from "./MarkAsCompleted";
 import StreakCounter from "./StreakCounter";
+import GetWindowSize from "./GetWindowSize";
 
 import { useEffect } from "react";
 
 const ShowHabits = ({ habits, loading, setHabits }) => {
-  const today = new Date().toISOString().split("T")[0]; // Get today's date in 'YYYY-MM-DD' format
+  const [monthsToShow, setMonthsToShow] = useState(6);
+  const [width, setWidth] = useState(window.innerWidth);
+  const today = new Date();
+  const startDate = new Date(
+    today.getFullYear(),
+    today.getMonth() - monthsToShow,
+    1
+  );
 
   //get current time
   useEffect(() => {
@@ -31,6 +40,10 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
 
   return (
     <>
+      {width}
+      {/* Get window size */}
+      <GetWindowSize setMonthsToShow={setMonthsToShow} setWidth={setWidth} />
+
       {!loading && (
         <div>
           {habits.length > 0 &&
@@ -52,9 +65,7 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
 
                 {/* Render the calendar heatmap */}
                 <ReactCalendarHeatmap
-                  startDate={
-                    new Date(today.split("-")[0], new Date().getMonth() - 6, 1)
-                  }
+                  startDate={startDate}
                   endDate={new Date(today)}
                   values={habit.calendar || []}
                   classForValue={(value) =>
