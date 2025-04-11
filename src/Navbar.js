@@ -5,7 +5,7 @@ export default function Navbar() {
   const [name, setName] = useContext(NameContext);
 
   return (
-    <div className="nav p-2 bg-blue-400">
+    <div className="nav p-2 bg-blue-400 text-center">
       <h1 className="text-lg text-bold">
         {name
           ? `Welcome to Habit Tracker, ${name}!`

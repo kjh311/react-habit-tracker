@@ -3,6 +3,7 @@ import DeleteHabit from "./DeleteHabit";
 import "react-calendar-heatmap/dist/styles.css";
 import "./heatmap-custom.css";
 import MarkAsCompleted from "./MarkAsCompleted";
+import StreakCounter from "./StreakCounter";
 
 const ShowHabits = ({ habits, loading, setHabits }) => {
   const today = new Date().toISOString().split("T")[0]; // Get today's date in 'YYYY-MM-DD' format
@@ -13,14 +14,19 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
         <div>
           {habits.length > 0 &&
             habits.map((habit, id) => (
-              <div key={id} className="card">
+              <div key={id} className="card relative">
                 <DeleteHabit
                   id={habit.id}
                   habits={habits}
                   setHabits={setHabits}
                 />
-                <div className="font-bold text-xl">{habit.name}</div>
-                <div className="text-sm text-gray-600">ID: {habit.id}</div>
+                <div className="mx-auto text-center object-center relative">
+                  <div className="habitName font-bold text-xl ">
+                    {habit.name}
+                  </div>
+                  {/* <div className="text-sm text-gray-600">ID: {habit.id}</div> */}
+                  <StreakCounter habit={habit} />
+                </div>
 
                 {/* Render the calendar heatmap */}
                 <ReactCalendarHeatmap
@@ -36,7 +42,7 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
                   }
                 />
                 <br />
-                <ul className="inlineUL pt-4">
+                <ul className="inlineUL pt-4 text-right">
                   <li className="less">Less</li>
                   <li className="square color-square-empty"></li>
                   <li className="square color-square-1"></li>
@@ -47,8 +53,8 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
                 </ul>
 
                 <br />
-                {/* Button to mark the habit as completed for today */}
 
+                {/* Button to mark the habit as completed for today */}
                 <MarkAsCompleted
                   habit={habit}
                   setHabits={setHabits}

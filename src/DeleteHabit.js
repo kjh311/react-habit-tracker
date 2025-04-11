@@ -14,7 +14,13 @@ const DeleteHabit = ({ id, habits, setHabits }) => {
   };
   return (
     <IconButton
-      className=" float-right"
+      className="deleteHabit"
+      // style={{
+      //   position: "absolute",
+      //   top: "0.5rem",
+      //   right: "0.5rem",
+      //   zIndex: 10,
+      // }}
       aria-label="close"
       onClick={() => deleteHabit(id)}
     >

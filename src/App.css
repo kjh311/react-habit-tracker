@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .App {
-  text-align: center;
+  /* text-align: center; */
 }
 
 .card {
@@ -23,46 +23,4 @@
 
 .nav {
   border-bottom: 2px solid black;
-}
-
-.square {
-  height: 20px;
-  width: 20px;
-  /* background-color: red; */
-}
-
-.color-square-empty {
-  background-color: #eeeeee;
-}
-.color-square-1 {
-  background-color: #d6e685;
-}
-.color-square-2 {
-  background-color: #8cc665;
-}
-.color-square-3 {
-  background-color: #44a340;
-}
-.color-square-4 {
-  background-color: #1e6823;
-}
-.border-square {
-  stroke: #fff;
-  stroke-width: 1px;
-}
-
-.inlineUL li {
-  display: inline-block;
-  margin-right: 3px; /* To add some space between items */
-  width: 20px; /* Just to make the square visible */
-  height: 20px; /* Just to make the square visible */
-}
-
-.inlineUL {
-  /* top: 10px; */
-  /* position: relative; */
-  margin-right: 50px;
-}
-.less {
-  margin-right: 20px !important;
 }
