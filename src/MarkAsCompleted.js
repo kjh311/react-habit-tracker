@@ -24,7 +24,7 @@ export default function MarkAsCompleted({ habit, setHabits, today }) {
   return (
     <div className="text-center">
       <button
-        className="p-2 m-2 border rounded-lg bg-green-400 hover:bg-green-700 hover:text-white"
+        className="p-2 m-2 border rounded-lg bg-green-400 hover:bg-green-700 hover:text-white transition-colors duration-300"
         onClick={markAsCompleted}
       >
         Mark as Completed Today

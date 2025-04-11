@@ -19,7 +19,7 @@ export default function AddUserName({ loading }) {
   return (
     <div>
       {!loading && !name && (
-        <div className="card">
+        <div className="card text-center">
           <p>
             {/* Welcome to Habit Tracker. <br /> */}
             Please enter your name to get started:

@@ -35,14 +35,14 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
           />
           <br />
           <button
-            className="p-2 m-2 border rounded-lg bg-blue-400 hover:bg-blue-700 hover:text-white"
+            className="p-2 m-2 border rounded-lg bg-blue-400 hover:bg-blue-700 hover:text-white transition-colors duration-300"
             type="submit"
           >
             Add Habit
           </button>
         </form>
       ) : (
-        "LOADING..."
+        <div className="text-center">"LOADING..."</div>
       )}
     </div>
   );
