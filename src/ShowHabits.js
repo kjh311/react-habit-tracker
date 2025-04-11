@@ -12,10 +12,12 @@ import { useEffect } from "react";
 const ShowHabits = ({ habits, loading, setHabits }) => {
   const [monthsToShow, setMonthsToShow] = useState(6);
   const [width, setWidth] = useState(window.innerWidth);
-  const today = new Date();
+  //   const today = new Date();
+  const todayDate = new Date(); // Date object
+  const today = todayDate.toISOString().split("T")[0]; // Formatted string
   const startDate = new Date(
-    today.getFullYear(),
-    today.getMonth() - monthsToShow,
+    todayDate.getFullYear(),
+    todayDate.getMonth() - monthsToShow,
     1
   );
 
