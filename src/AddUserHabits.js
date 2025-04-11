@@ -26,6 +26,11 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
     <div>
       {!loading ? (
         <form className="card text-center" onSubmit={handleAddHabit}>
+          {habits.length === 0 && (
+            <p className="text-center">
+              Great! Now let's enter your first habit to get started:
+            </p>
+          )}
           <input
             type="text"
             className="border rounded-lg p-2 m-2 text-center"

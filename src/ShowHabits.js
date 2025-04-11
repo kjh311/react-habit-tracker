@@ -40,7 +40,7 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
 
   return (
     <>
-      {width}
+      {/* {width} */}
       {/* Get window size */}
       <GetWindowSize setMonthsToShow={setMonthsToShow} setWidth={setWidth} />
 

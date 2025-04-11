@@ -20,11 +20,13 @@ export default function AddUserName({ loading }) {
     <div>
       {!loading && !name && (
         <div className="card text-center">
-          <p className="text-center">Please enter your name to get started:</p>
           <form
             className="border border-black rounded-lg p-2 m-2 "
             onSubmit={handleAddName}
           >
+            <p className="text-center">
+              Please enter your name to get started:
+            </p>
             <input
               className="border rounded p-2 m-2 text-center"
               type="text"
