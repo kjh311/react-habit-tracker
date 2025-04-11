@@ -5,8 +5,29 @@ import "./heatmap-custom.css";
 import MarkAsCompleted from "./MarkAsCompleted";
 import StreakCounter from "./StreakCounter";
 
+import { useEffect } from "react";
+
 const ShowHabits = ({ habits, loading, setHabits }) => {
   const today = new Date().toISOString().split("T")[0]; // Get today's date in 'YYYY-MM-DD' format
+
+  //get current time
+  useEffect(() => {
+    var currentdate = new Date();
+    var datetime =
+      "Last Sync: " +
+      currentdate.getDay() +
+      "/" +
+      currentdate.getMonth() +
+      "/" +
+      currentdate.getFullYear() +
+      " @ " +
+      currentdate.getHours() +
+      ":" +
+      currentdate.getMinutes() +
+      ":" +
+      currentdate.getSeconds();
+    console.log(datetime);
+  }, []);
 
   return (
     <>
@@ -25,6 +46,7 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
                     {habit.name}
                   </div>
                   {/* <div className="text-sm text-gray-600">ID: {habit.id}</div> */}
+
                   <StreakCounter habit={habit} />
                 </div>
 

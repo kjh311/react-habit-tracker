@@ -20,16 +20,13 @@ export default function AddUserName({ loading }) {
     <div>
       {!loading && !name && (
         <div className="card text-center">
-          <p>
-            {/* Welcome to Habit Tracker. <br /> */}
-            Please enter your name to get started:
-          </p>
+          <p className="text-center">Please enter your name to get started:</p>
           <form
             className="border border-black rounded-lg p-2 m-2 "
             onSubmit={handleAddName}
           >
             <input
-              className="border rounded p-2 m-2"
+              className="border rounded p-2 m-2 text-center"
               type="text"
               value={nameInput}
               placeholder="Enter your name:"

@@ -8,19 +8,11 @@ const DeleteHabit = ({ id, habits, setHabits }) => {
       const updatedHabits = habits.filter((habit) => habit.id !== id);
       setHabits(updatedHabits);
       localStorage.setItem("habitTrackerHabits", JSON.stringify(updatedHabits));
-      // localStorage.removeItem("habitTrackerHabits", habitTrackerHabits(id))
-      // setHabits((prev) => prev.filter((habit) => habit.id !== id))
     }
   };
   return (
     <IconButton
       className="deleteHabit"
-      // style={{
-      //   position: "absolute",
-      //   top: "0.5rem",
-      //   right: "0.5rem",
-      //   zIndex: 10,
-      // }}
       aria-label="close"
       onClick={() => deleteHabit(id)}
     >

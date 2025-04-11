@@ -21,7 +21,13 @@ export default function HabitTracker() {
 
       <AddUserName loading={loading} />
 
-      <AddUserHabits habits={habits} setHabits={setHabits} loading={loading} />
+      {name && (
+        <AddUserHabits
+          habits={habits}
+          setHabits={setHabits}
+          loading={loading}
+        />
+      )}
 
       <ShowHabits habits={habits} loading={loading} setHabits={setHabits} />
     </div>
