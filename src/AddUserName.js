@@ -45,7 +45,7 @@ export default function AddUserName({ loading }) {
               onChange={(e) => setNameInput(e.target.value)}
             />
             <br />
-            <Button text={"Submit Name"} type={"text"} />
+            <Button text={"Submit Name"} type={"submit"} />
           </form>
         </div>
       )}

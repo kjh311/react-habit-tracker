@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DayThemeContext } from "./App";
 import Button from "./Button";
 import Input from "./Input";
 
 export default function AddUserHabits({ habits, setHabits, loading }) {
   const [habitInput, setHabitInput] = useState("");
+  const [dayTheme, setDayTheme] = useContext(DayThemeContext);
 
   const handleAddHabit = (e) => {
     e.preventDefault();
@@ -25,9 +27,20 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
   };
 
   return (
-    <div>
+    <div
+      className={`text-center card transition-all duration-500 ${
+        dayTheme
+          ? "dayTheme2 text-black dayCard"
+          : "nightTheme5 text-white nightCard"
+      }`}
+    >
       {!loading ? (
-        <form className="card text-center" onSubmit={handleAddHabit}>
+        <form
+          onSubmit={handleAddHabit}
+          className={`border transition-all duration-500 ${
+            dayTheme ? "dayTheme3 text-black" : "nightTheme2 text-white"
+          } rounded-lg p-2 m-2`}
+        >
           {habits.length === 0 && (
             <p className="text-center">
               Great! Now let's enter your first habit to get started:
@@ -39,12 +52,6 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
             onChange={(e) => setHabitInput(e.target.value)}
           />
           <br />
-          {/* <button
-            className="p-2 m-2 border rounded-lg bg-blue-400 hover:bg-blue-700 hover:text-white transition-colors duration-300"
-            type="submit"
-          >
-            Add Habit
-          </button> */}
           <Button type={"submit"} text={"Add Habit"} />
         </form>
       ) : (

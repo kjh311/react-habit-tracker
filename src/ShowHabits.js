@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import ReactCalendarHeatmap from "react-calendar-heatmap";
 import DeleteHabit from "./DeleteHabit";
 import "react-calendar-heatmap/dist/styles.css";
@@ -6,10 +6,12 @@ import "./heatmap-custom.css";
 import MarkAsCompleted from "./MarkAsCompleted";
 import StreakCounter from "./StreakCounter";
 import GetWindowSize from "./GetWindowSize";
+import { DayThemeContext } from "./App";
 
 import { useEffect } from "react";
 
 const ShowHabits = ({ habits, loading, setHabits }) => {
+  const [dayTheme, setDayTheme] = useContext(DayThemeContext);
   const [monthsToShow, setMonthsToShow] = useState(6);
   const [width, setWidth] = useState(window.innerWidth);
   //   const today = new Date();
@@ -47,10 +49,21 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
       <GetWindowSize setMonthsToShow={setMonthsToShow} setWidth={setWidth} />
 
       {!loading && (
-        <div>
+        <div
+          className={`text-center card transition-all duration-500 ${
+            dayTheme
+              ? "dayTheme2 text-black dayCard"
+              : "nightTheme5 text-white nightCard"
+          }`}
+        >
           {habits.length > 0 &&
             habits.map((habit, id) => (
-              <div key={id} className="card relative">
+              <div
+                key={id}
+                className={`relative border transition-all duration-500 ${
+                  dayTheme ? "dayTheme3 text-black" : "nightTheme2 text-white"
+                } rounded-lg p-2 m-2`}
+              >
                 <DeleteHabit
                   id={habit.id}
                   habits={habits}
