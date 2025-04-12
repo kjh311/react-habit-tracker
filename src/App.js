@@ -24,18 +24,22 @@ function App() {
   const [dayTheme, setDayTheme] = useState(true);
 
   return (
-    <div className="App">
-      <NameContext.Provider value={[name, setName]}>
-        <DayThemeContext.Provider value={[dayTheme, setDayTheme]}>
+    <NameContext.Provider value={[name, setName]}>
+      <DayThemeContext.Provider value={[dayTheme, setDayTheme]}>
+        <div
+          className={`App ${
+            dayTheme ? "dayTheme4" : "nightTheme3"
+          } transition-colors duration-500`}
+        >
           <Navbar />
           <HabitTracker />
           {/* <Routes> */}
           {/* <Route path="/" element={<Home />} /> */}
           {/* <Route path="/about" element={<About />} /> */}
           {/* </Routes> */}
-        </DayThemeContext.Provider>
-      </NameContext.Provider>
-    </div>
+        </div>
+      </DayThemeContext.Provider>
+    </NameContext.Provider>
   );
 }
 

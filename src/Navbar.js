@@ -14,7 +14,7 @@ export default function Navbar() {
   return (
     <div
       className={`nav p-2 text-center transition-colors duration-500 ${
-        dayTheme ? "bg-blue-400 text-black" : "bg-blue-800 text-white"
+        dayTheme ? "dayTheme2 text-black" : "nightTheme2 text-white"
       }`}
     >
       <button

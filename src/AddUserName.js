@@ -1,8 +1,9 @@
 import { useContext, useState } from "react";
-import { NameContext } from "./App";
+import { NameContext, DayThemeContext } from "./App";
 
 export default function AddUserName({ loading }) {
   const [name, setName] = useContext(NameContext);
+  const [dayTheme, setDayTheme] = useContext(DayThemeContext);
   const [nameInput, setNameInput] = useState("");
 
   //ADD USER NAME
@@ -19,7 +20,13 @@ export default function AddUserName({ loading }) {
   return (
     <div>
       {!loading && !name && (
-        <div className="card text-center">
+        <div
+          className={`card text-center transition-all duration-500 ${
+            dayTheme
+              ? "dayTheme3 text-black dayCard"
+              : "nightTheme5 text-white nightCard"
+          }`}
+        >
           <form
             className="border border-black rounded-lg p-2 m-2 "
             onSubmit={handleAddName}

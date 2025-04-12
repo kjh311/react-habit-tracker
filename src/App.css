@@ -4,16 +4,24 @@
 
 .App {
   /* text-align: center; */
+  height: 100vh;
 }
 
 .card {
-  border: 2px solid black;
   width: 80vw;
   border-radius: 5px;
   margin: 10px auto;
   padding: 10px;
   /* margin-bottom: 5px; */
   position: relative;
+}
+
+.nightCard {
+  border: 2px solid white;
+}
+
+.dayCard {
+  border: 2px solid black;
 }
 
 .border {
@@ -36,4 +44,44 @@
 .iconButton {
   position: absolute;
   right: 15px;
+}
+
+.nightTheme5 {
+  background-color: #0a1128;
+}
+
+.nightTheme4 {
+  background-color: #001f54;
+}
+
+.nightTheme3 {
+  background-color: #034078;
+}
+
+.nightTheme2 {
+  background-color: #1282a2;
+}
+
+.nightTheme1 {
+  background-color: #fefcfb;
+}
+
+.dayTheme5 {
+  background-color: #227c9d;
+}
+
+.dayTheme4 {
+  background-color: #17c3b2;
+}
+
+.dayTheme3 {
+  background-color: #ffcb77;
+}
+
+.dayTheme2 {
+  background-color: #fe6d73;
+}
+
+.dayTheme1 {
+  background-color: #fef9ef;
 }
