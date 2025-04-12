@@ -35,6 +35,7 @@ export default function AddUserName({ loading }) {
             } rounded-lg p-2 m-2`}
             onSubmit={handleAddName}
           >
+            <h1 className="text-xl">WELCOME!!</h1>
             <p className="text-center">
               Please enter your name to get started:
             </p>

@@ -48,7 +48,7 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
       {/* Get window size */}
       <GetWindowSize setMonthsToShow={setMonthsToShow} setWidth={setWidth} />
 
-      {!loading && (
+      {!loading && habits.length > 0 ? (
         <div
           className={`text-center card transition-all duration-500 ${
             dayTheme
@@ -111,6 +111,8 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
               </div>
             ))}
         </div>
+      ) : (
+        ""
       )}
     </>
   );

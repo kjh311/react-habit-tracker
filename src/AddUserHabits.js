@@ -42,9 +42,12 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
           } rounded-lg p-2 m-2`}
         >
           {habits.length === 0 && (
-            <p className="text-center">
-              Great! Now let's enter your first habit to get started:
-            </p>
+            <>
+              <h1 className="text-xl">GREAT!!</h1>
+              <p className="text-center">
+                Now let's enter your first habit to get started:
+              </p>
+            </>
           )}
           <Input
             placeholder={"Enter a new habit:"}
