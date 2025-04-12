@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Button from "./Button";
+import Input from "./Input";
 
 export default function AddUserHabits({ habits, setHabits, loading }) {
   const [habitInput, setHabitInput] = useState("");
@@ -31,20 +33,19 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
               Great! Now let's enter your first habit to get started:
             </p>
           )}
-          <input
-            type="text"
-            className="border rounded-lg p-2 m-2 text-center"
+          <Input
+            placeholder={"Enter a new habit:"}
             value={habitInput}
-            placeholder="Enter a new habit:"
             onChange={(e) => setHabitInput(e.target.value)}
           />
           <br />
-          <button
+          {/* <button
             className="p-2 m-2 border rounded-lg bg-blue-400 hover:bg-blue-700 hover:text-white transition-colors duration-300"
             type="submit"
           >
             Add Habit
-          </button>
+          </button> */}
+          <Button type={"submit"} text={"Add Habit"} />
         </form>
       ) : (
         <div className="text-center">"LOADING..."</div>

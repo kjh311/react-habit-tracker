@@ -29,8 +29,12 @@
   border-radius: 5x;
 }
 
-.nav {
+.nav-day {
   border-bottom: 2px solid black;
+}
+
+.nav-night {
+  border-bottom: 2px solid white;
 }
 
 .icon {
@@ -84,4 +88,58 @@
 
 .dayTheme1 {
   background-color: #fef9ef;
+}
+
+.day-button {
+  background-color: #17c3b2;
+  color: black;
+  border: 2px solid black;
+}
+
+.day-button:hover {
+  color: white;
+  background-color: #227c9d;
+}
+
+.night-button {
+  border: 2px solid white;
+  background-color: #034078;
+  color: white;
+}
+
+.night-button:hover {
+  background-color: #17c3b2;
+  color: black;
+}
+
+.input-day::placeholder {
+  background-color: white;
+  color: #034078;
+  opacity: 1;
+  transition: all;
+  transition-duration: 500ms;
+}
+
+.input-day {
+  background-color: white;
+  color: #034078;
+  opacity: 1;
+  border: 2px solid black;
+  transition: all;
+  transition-duration: 500ms;
+}
+
+.input-night {
+  color: white;
+  background-color: #17c3b2;
+  border: 2px solid white;
+  transition: all;
+  transition-duration: 500ms;
+}
+
+.input-night::placeholder {
+  color: white;
+  background-color: #17c3b2;
+  transition: all;
+  transition-duration: 500ms;
 }

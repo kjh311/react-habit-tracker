@@ -1,5 +1,7 @@
 import { useContext, useState } from "react";
 import { NameContext, DayThemeContext } from "./App";
+import Button from "./Button";
+import Input from "./Input";
 
 export default function AddUserName({ loading }) {
   const [name, setName] = useContext(NameContext);
@@ -23,28 +25,27 @@ export default function AddUserName({ loading }) {
         <div
           className={`card text-center transition-all duration-500 ${
             dayTheme
-              ? "dayTheme3 text-black dayCard"
+              ? "dayTheme2 text-black dayCard"
               : "nightTheme5 text-white nightCard"
           }`}
         >
           <form
-            className="border border-black rounded-lg p-2 m-2 "
+            className={`border transition-all duration-500 ${
+              dayTheme ? "dayTheme3 text-black" : "nightTheme2 text-white"
+            } rounded-lg p-2 m-2`}
             onSubmit={handleAddName}
           >
             <p className="text-center">
               Please enter your name to get started:
             </p>
-            <input
-              className="border rounded p-2 m-2 text-center"
-              type="text"
+
+            <Input
+              placeholder={"Enter your name:"}
               value={nameInput}
-              placeholder="Enter your name:"
               onChange={(e) => setNameInput(e.target.value)}
             />
             <br />
-            <button className="p-2 m-2 bg-blue-400 hover:bg-blue-600 border border-black rounded-lg">
-              Submit Name
-            </button>
+            <Button text={"Submit Name"} type={"text"} />
           </form>
         </div>
       )}
