@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { NameContext, DayThemeContext } from "./App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +13,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={` p-2 text-center transition-colors duration-500 ${
+      className={`sticky top-0 z-50 p-2 text-center transition-colors duration-500 ${
         dayTheme
           ? "dayTheme2 text-black nav-day"
           : "nightTheme2 text-white nav-night"

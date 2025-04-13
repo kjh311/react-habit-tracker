@@ -43,6 +43,14 @@
   border-bottom: 2px solid white;
 }
 
+.footer-day{
+  border-top: 2px solid black;
+}
+
+.footer-night{
+  border-top: 2px solid white;
+}
+
 .icon {
   /* fill: yellow; */
   /* width: 40px; */
@@ -166,4 +174,9 @@
 .habit-name{
   @include variables.poetsen;
   font-size: 2em;
+}
+
+.link{
+  text-decoration: underline;
+  // color: $
 }

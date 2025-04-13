@@ -2,7 +2,7 @@ import "./App.scss";
 import React, { useState } from "react";
 // import { Routes, Route, Link } from "react-router-dom";
 import Navbar from "./Navbar";
-// import About from "./About";
+import Footer from "./Footer";
 import HabitTracker from "./HabitTracker";
 
 export const NameContext = React.createContext();
@@ -33,10 +33,7 @@ function App() {
         >
           <Navbar />
           <HabitTracker />
-          {/* <Routes> */}
-          {/* <Route path="/" element={<Home />} /> */}
-          {/* <Route path="/about" element={<About />} /> */}
-          {/* </Routes> */}
+          <Footer />
         </div>
       </DayThemeContext.Provider>
     </NameContext.Provider>
