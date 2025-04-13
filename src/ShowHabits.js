@@ -70,7 +70,7 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
                   setHabits={setHabits}
                 />
                 <div className="mx-auto text-center object-center relative">
-                  <div className="habitName font-bold text-xl ">
+                  <div className="habit-name font-bold text-xl ">
                     {habit.name}
                   </div>
                   {/* <div className="text-sm text-gray-600">ID: {habit.id}</div> */}

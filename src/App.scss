@@ -151,5 +151,19 @@
 }
 
 .nav-title{
-  @include variables.gothic;
+  @include variables.poetsen;
+  font-size: 2em;
+}
+
+.night-text{
+  color: variables.$night-theme1;
+}
+
+.day-text{
+  color: variables.$day-theme6;
+}
+
+.habit-name{
+  @include variables.poetsen;
+  font-size: 2em;
 }

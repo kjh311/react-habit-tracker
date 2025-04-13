@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { DayThemeContext } from "./App";
 
 export default function StreakCounter({ habit }) {
   const [currentStreak, setCurrentStreak] = useState(0);
   const [longestStreak, setLongestStreak] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
+  const [dayTheme, setDayTheme] = useContext(DayThemeContext);
 
   useEffect(() => {
     if (!habit?.calendar || habit.calendar.length === 0) return;
@@ -62,18 +64,30 @@ export default function StreakCounter({ habit }) {
   }, [habit]);
 
   return (
-    <div className="text-sm text-center font-semibold mt-2">
-      {/* {currentStreak > 0 && ( */}
-      <div className="text-green-600">
-        🔥 Current Streak: {currentStreak} day{currentStreak !== 1 ? "s" : ""}
+    <div className="text-sm  font-semibold mt-2">
+      <div className="flex flex-wrap justify-center items-center text-center gap-4 my-4">
+        <div
+          className={`w-full sm:w-auto transition-all duration-500 ${
+            dayTheme ? "day-text" : "night-text"
+          }`}
+        >
+          🔥 Current Streak: {currentStreak} day{currentStreak !== 1 ? "s" : ""}
+        </div>
+        <div
+          className={`w-full sm:w-auto transition-all duration-500 ${
+            dayTheme ? "day-text" : "night-text"
+          }`}
+        >
+          🏆 Longest Streak: {longestStreak} day{longestStreak !== 1 ? "s" : ""}
+        </div>
+        <div
+          className={`w-full sm:w-auto transition-all duration-500 ${
+            dayTheme ? "day-text" : "night-text"
+          }`}
+        >
+          ⭐ Total Count: {totalCount}
+        </div>
       </div>
-      {/* // )} */}
-      {/* {longestStreak > 0 && ( */}
-      <div className="text-blue-600">
-        🏆 Longest Streak: {longestStreak} day{longestStreak !== 1 ? "s" : ""}
-      </div>
-      {/* )} */}
-      <div>⭐ Total Count: {totalCount}</div>
     </div>
   );
 }
