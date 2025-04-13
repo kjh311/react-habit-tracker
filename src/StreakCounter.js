@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export default function StreakCounter({ habit }) {
   const [currentStreak, setCurrentStreak] = useState(0);
   const [longestStreak, setLongestStreak] = useState(0);
+  const [totalCount, setTotalCount] = useState(0);
 
   useEffect(() => {
     if (!habit?.calendar || habit.calendar.length === 0) return;
@@ -14,6 +15,13 @@ export default function StreakCounter({ habit }) {
       .filter((entry) => entry.count > 0)
       .map((entry) => entry.date)
       .sort(); // sort for longest streak calc
+
+    const habitTotalCount = habit.calendar.reduce((acc, item) => {
+      acc += item.count;
+      return acc;
+    }, 0);
+
+    setTotalCount(habitTotalCount);
 
     const calendarSet = new Set(activeDates);
 
@@ -55,16 +63,17 @@ export default function StreakCounter({ habit }) {
 
   return (
     <div className="text-sm text-center font-semibold mt-2">
-      {currentStreak > 0 && (
-        <div className="text-green-600">
-          🔥 Current Streak: {currentStreak} day{currentStreak !== 1 ? "s" : ""}
-        </div>
-      )}
-      {longestStreak > 0 && (
-        <div className="text-blue-600">
-          🏆 Longest Streak: {longestStreak} day{longestStreak !== 1 ? "s" : ""}
-        </div>
-      )}
+      {/* {currentStreak > 0 && ( */}
+      <div className="text-green-600">
+        🔥 Current Streak: {currentStreak} day{currentStreak !== 1 ? "s" : ""}
+      </div>
+      {/* // )} */}
+      {/* {longestStreak > 0 && ( */}
+      <div className="text-blue-600">
+        🏆 Longest Streak: {longestStreak} day{longestStreak !== 1 ? "s" : ""}
+      </div>
+      {/* )} */}
+      <div>⭐ Total Count: {totalCount}</div>
     </div>
   );
 }

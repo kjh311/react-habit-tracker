@@ -34,7 +34,7 @@ export default function Navbar() {
         />
       </button>
 
-      <h1 className="text-lg text-bold">
+      <h1 className="text-lg text-bold nav-title">
         {name
           ? `Welcome to Habit Tracker, ${name}!`
           : "Welcome to Habit Tracker!"}

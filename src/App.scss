@@ -149,3 +149,7 @@
   transition: all;
   transition-duration: 500ms;
 }
+
+.nav-title{
+  @include variables.gothic;
+}
