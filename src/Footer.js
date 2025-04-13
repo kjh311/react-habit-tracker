@@ -6,7 +6,7 @@ const Footer = () => {
 
   return (
     <div
-      className={`p-4 text-center transition-colors duration-500 ${
+      className={`footer p-4 text-center transition-colors duration-500 ${
         dayTheme
           ? "dayTheme2 text-black footer-day"
           : "nightTheme2 text-white footer-night"

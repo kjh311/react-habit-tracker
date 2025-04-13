@@ -6,6 +6,7 @@ import Input from "./Input";
 export default function AddUserHabits({ habits, setHabits, loading }) {
   const [habitInput, setHabitInput] = useState("");
   const [dayTheme, setDayTheme] = useContext(DayThemeContext);
+  const [habitAdded, setHabitAdded] = useState(false); // State to manage the floating message
 
   const handleAddHabit = (e) => {
     e.preventDefault();
@@ -24,6 +25,10 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
     setHabits(updatedHabits);
 
     setHabitInput("");
+    setHabitAdded(true); // Trigger the floating message
+
+    // Hide the message after 2 seconds
+    setTimeout(() => setHabitAdded(false), 2000);
   };
 
   return (
@@ -60,6 +65,9 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
       ) : (
         <div className="text-center">"LOADING..."</div>
       )}
+
+      {/* Floating message animation */}
+      {habitAdded && <div className="floating-message">Habit Added!</div>}
     </div>
   );
 }

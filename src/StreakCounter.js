@@ -1,33 +1,32 @@
 import { useEffect, useState, useContext } from "react";
 import { DayThemeContext } from "./App";
 
-export default function StreakCounter({ habit }) {
+export default function StreakCounter({ habit, pulse }) {
   const [currentStreak, setCurrentStreak] = useState(0);
   const [longestStreak, setLongestStreak] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
-  const [dayTheme, setDayTheme] = useContext(DayThemeContext);
+  const [dayTheme] = useContext(DayThemeContext);
+  const [isPulsing, setIsPulsing] = useState(false);
 
   useEffect(() => {
     if (!habit?.calendar || habit.calendar.length === 0) return;
 
     const today = new Date();
 
-    // Convert the calendar into a Set of active dates
     const activeDates = habit.calendar
       .filter((entry) => entry.count > 0)
       .map((entry) => entry.date)
-      .sort(); // sort for longest streak calc
+      .sort();
 
     const habitTotalCount = habit.calendar.reduce((acc, item) => {
-      acc += item.count;
-      return acc;
+      return acc + item.count;
     }, 0);
 
     setTotalCount(habitTotalCount);
 
     const calendarSet = new Set(activeDates);
 
-    // ✅ Calculate current streak
+    // ✅ Current streak
     let streakCount = 0;
     for (let i = 0; ; i++) {
       const checkDate = new Date(today);
@@ -37,13 +36,13 @@ export default function StreakCounter({ habit }) {
       if (calendarSet.has(dateStr)) {
         streakCount++;
       } else {
-        break; // streak broken
+        break;
       }
     }
 
     setCurrentStreak(streakCount);
 
-    // ✅ Calculate longest streak
+    // ✅ Longest streak
     let maxStreak = 0;
     let tempStreak = 1;
 
@@ -60,11 +59,20 @@ export default function StreakCounter({ habit }) {
       }
     }
 
-    setLongestStreak(Math.max(maxStreak, 1)); // at least 1
+    setLongestStreak(Math.max(maxStreak, 1));
   }, [habit]);
 
+  // ✅ only pulse when `pulse` prop is true
+  useEffect(() => {
+    if (pulse) {
+      setIsPulsing(true);
+      const timer = setTimeout(() => setIsPulsing(false), 300);
+      return () => clearTimeout(timer);
+    }
+  }, [pulse]);
+
   return (
-    <div className="text-sm  font-semibold mt-2">
+    <div className="text-sm font-semibold mt-2">
       <div className="flex flex-wrap justify-center items-center text-center gap-4 my-4">
         <div
           className={`w-full sm:w-auto transition-all duration-500 ${
@@ -83,7 +91,7 @@ export default function StreakCounter({ habit }) {
         <div
           className={`w-full sm:w-auto transition-all duration-500 ${
             dayTheme ? "day-text" : "night-text"
-          }`}
+          } ${isPulsing ? "animate-pulse" : ""}`}
         >
           ⭐ Total Count: {totalCount}
         </div>

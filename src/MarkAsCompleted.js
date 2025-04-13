@@ -1,7 +1,10 @@
-import { useContext } from "react";
 import Button from "./Button";
-
-export default function MarkAsCompleted({ habit, setHabits, today }) {
+export default function MarkAsCompleted({
+  habit,
+  setHabits,
+  today,
+  setPulseHabitId,
+}) {
   const markAsCompleted = () => {
     const updatedHabits =
       JSON.parse(localStorage.getItem("habitTrackerHabits")) || [];
@@ -22,6 +25,9 @@ export default function MarkAsCompleted({ habit, setHabits, today }) {
 
     localStorage.setItem("habitTrackerHabits", JSON.stringify(updated));
     setHabits(updated);
+
+    setPulseHabitId(habit.id); // trigger pulse
+    setTimeout(() => setPulseHabitId(null), 400); // remove pulse after short delay
   };
 
   return (
