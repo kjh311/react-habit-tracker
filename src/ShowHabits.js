@@ -11,6 +11,8 @@ import { DayThemeContext } from "./App";
 import { useEffect } from "react";
 
 const ShowHabits = ({ habits, loading, setHabits }) => {
+  const [deletingHabitId, setDeletingHabitId] = useState(null);
+
   const [dayTheme, setDayTheme] = useContext(DayThemeContext);
   const [monthsToShow, setMonthsToShow] = useState(6);
   const [width, setWidth] = useState(window.innerWidth);
@@ -62,12 +64,15 @@ const ShowHabits = ({ habits, loading, setHabits }) => {
                 key={id}
                 className={`relative border transition-all duration-500 ${
                   dayTheme ? "dayTheme3 text-black" : "nightTheme2 text-white"
-                } rounded-lg p-2 m-2`}
+                } rounded-lg p-2 m-2 ${
+                  deletingHabitId === habit.id ? "habit-fade-out" : ""
+                }`}
               >
                 <DeleteHabit
                   id={habit.id}
                   habits={habits}
                   setHabits={setHabits}
+                  onDeleteStart={() => setDeletingHabitId(habit.id)}
                 />
                 <div className="mx-auto text-center object-center relative">
                   <div className="habit-name font-bold text-xl ">

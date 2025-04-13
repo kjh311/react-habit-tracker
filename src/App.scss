@@ -32,7 +32,7 @@
 
 .border {
   border: 2px solid black;
-  border-radius: 5x;
+  border-radius: 5px;
 }
 
 .nav-day {
@@ -179,4 +179,11 @@
 .link{
   text-decoration: underline;
   // color: $
+}
+
+.habit-fade-out {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+  will-change: opacity, transform;
 }
