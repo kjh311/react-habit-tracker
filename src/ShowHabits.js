@@ -86,7 +86,7 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                     const count = value ? value.count : 0;
                     return !value
                       ? "color-empty"
-                      : `color-scale-${Math.min(count, 4)} border-square`;
+                      : `color-scale-${Math.min(count, 10)} border-square`;
                   }}
                   renderCustomCell={(value) => {
                     return (
