@@ -325,3 +325,43 @@
   transition-duration: 500;
   fill: white !important;
 }
+
+.deleteHabit {
+  position: absolute !important;
+  top: 0.5rem !important;
+  right: 0.5rem !important;
+  z-index: 10 !important;
+  // padding: 10px;
+  background-color: rgba(0,0,0, 0) !important;
+  transition: all !important;
+  transition-duration: 200ms !important;
+  scale: 1
+  
+}
+
+.deleteHabit-hover:hover{
+  transition: all !important;
+  transition-duration: 200ms !important;
+  scale: 1.2;
+}
+
+.deleteHabit-night:hover{
+  background-color: rgba(255,255,255, 0.2) !important;
+}
+
+.deleteHabit-day:hover{
+  background-color: rgba(254, 109, 115, 0.2) !important;
+}
+
+.icon-day {
+    fill: variables.$day-theme2 !important;
+}
+
+.icon-night {
+  fill: variables.$night-theme1 !important;
+}
+
+.icon:hover{
+  // border-radius: 50% !important;
+  
+}

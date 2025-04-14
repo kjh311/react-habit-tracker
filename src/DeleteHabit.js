@@ -1,8 +1,11 @@
-import React from "react";
+import { useContext } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
+import { DayThemeContext } from "./App";
 
 const DeleteHabit = ({ id, habits, setHabits, onDeleteStart }) => {
+  const [dayTheme, setDayTheme] = useContext(DayThemeContext);
+
   const deleteHabit = (id) => {
     if (window.confirm("Delete this habit?")) {
       onDeleteStart?.(); // trigger the animation in ShowHabits
@@ -19,11 +22,19 @@ const DeleteHabit = ({ id, habits, setHabits, onDeleteStart }) => {
 
   return (
     <IconButton
-      className="deleteHabit"
+      className={`deleteHabit transition-colors duration-500 ease-in-out ${
+        dayTheme ? "deleteHabit-day" : "deleteHabit-night"
+      } ${window.innerWidth >= 768 && "deleteHabit-hover"}`}
       aria-label="close"
       onClick={() => deleteHabit(id)}
     >
-      <CloseIcon fontSize="large" style={{ color: "red" }} />
+      <CloseIcon
+        fontSize="large"
+        // style={{ color: "inherit" }}
+        className={`icon transition-colors duration-500 ease-in-out ${
+          dayTheme ? "icon-day" : "icon-night"
+        }`}
+      />
     </IconButton>
   );
 };

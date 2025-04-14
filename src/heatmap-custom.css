@@ -132,10 +132,3 @@ svg.react-calendar-heatmap {
   margin: 0 auto !important;
   position: relative !important;
 }
-
-.deleteHabit {
-  position: absolute !important;
-  top: 0.5rem !important;
-  right: 0.5rem !important;
-  z-index: 10 !important;
-}
