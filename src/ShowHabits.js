@@ -67,7 +67,6 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                   setHabits={setHabits}
                   onDeleteStart={() => setDeletingHabitId(habit.id)}
                 />
-
                 <div className="mx-auto text-center object-center relative">
                   <div className="habit-name font-bold text-xl">
                     {habit.name}
@@ -78,17 +77,33 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                     pulse={pulseHabitId === habit.id}
                   />
                 </div>
-
+                {console.log("Calendar", habit.calendar)}
                 <ReactCalendarHeatmap
                   startDate={startDate}
                   endDate={new Date(today)}
                   values={habit.calendar || []}
-                  classForValue={(value) =>
-                    !value
+                  classForValue={(value) => {
+                    const count = value ? value.count : 0;
+                    return !value
                       ? "color-empty"
-                      : `color-scale-${Math.min(value.count, 4)} border-square`
-                  }
+                      : `color-scale-${Math.min(count, 4)} border-square`;
+                  }}
+                  renderCustomCell={(value) => {
+                    return (
+                      <div
+                        className={`react-calendar-heatmap-cell ${
+                          value
+                            ? `color-scale-${Math.min(value.count, 4)}`
+                            : "color-empty"
+                        }`}
+                        data-tooltip={`Count for ${
+                          value?.date || "No count"
+                        }: ${value?.count || "0"}`}
+                      />
+                    );
+                  }}
                 />
+
                 <br />
                 <ul className="inlineUL pt-4 text-right">
                   <li className="less">Less</li>
@@ -99,9 +114,7 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                   <li className="square color-square-4"></li>
                   <li>More</li>
                 </ul>
-
                 <br />
-
                 <MarkAsCompleted
                   habit={habit}
                   setHabits={setHabits}

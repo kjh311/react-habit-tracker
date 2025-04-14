@@ -288,3 +288,28 @@
   }
 }
 
+.react-calendar-heatmap-cell {
+  position: relative;
+  display: inline-block;
+}
+
+.react-calendar-heatmap-cell::after {
+  content: attr(data-tooltip); /* Pull content from the data-tooltip attribute */
+  position: absolute;
+  bottom: 100%; /* Place the tooltip above the cell */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Fine-tune the centering */
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 12px;
+  visibility: hidden; /* Initially hidden */
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.react-calendar-heatmap-cell:hover::after {
+  visibility: visible; /* Tooltip becomes visible on hover */
+  opacity: 1; /* Fade in */
+}
