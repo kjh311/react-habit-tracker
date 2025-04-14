@@ -3,8 +3,8 @@ import { useEffect } from "react";
 const GetInfo = ({ habits, setHabits, setName, setLoading }) => {
   useEffect(() => {
     // *** Delete LocalStorage info ***
-    localStorage.removeItem("habitTrackerHabits");
-    localStorage.removeItem("habitTrackerUserName");
+    // localStorage.removeItem("habitTrackerHabits");
+    // localStorage.removeItem("habitTrackerUserName");
 
     // Get name
     const storedUserName = localStorage.getItem("habitTrackerUserName");

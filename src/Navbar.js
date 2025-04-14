@@ -35,7 +35,7 @@ export default function Navbar() {
       </button>
 
       <h1
-        className={`text-lg text-bold nav-title ${name ? "fade-in" : ""}`} // Apply the fade-in class conditionally
+        className={`text-lg text-bold nav-title `} // Apply the fade-in class conditionally
       >
         {name
           ? `Welcome to Habit Tracker, ${name}!`

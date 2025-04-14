@@ -27,7 +27,7 @@ function App() {
     <NameContext.Provider value={[name, setName]}>
       <DayThemeContext.Provider value={[dayTheme, setDayTheme]}>
         <div
-          className={`App ${
+          className={`App fade-in ${
             dayTheme ? "dayTheme4" : "nightTheme3"
           } transition-colors duration-500`}
         >

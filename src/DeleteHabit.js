@@ -1,11 +1,11 @@
-// import React from "react";
+import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { IconButton } from "@mui/material";
 
 const DeleteHabit = ({ id, habits, setHabits, onDeleteStart }) => {
   const deleteHabit = (id) => {
     if (window.confirm("Delete this habit?")) {
-      onDeleteStart?.(); // trigger animation
+      onDeleteStart?.(); // trigger the animation in ShowHabits
       setTimeout(() => {
         const updatedHabits = habits.filter((habit) => habit.id !== id);
         setHabits(updatedHabits);
@@ -13,7 +13,7 @@ const DeleteHabit = ({ id, habits, setHabits, onDeleteStart }) => {
           "habitTrackerHabits",
           JSON.stringify(updatedHabits)
         );
-      }, 500); // wait for animation to finish
+      }, 500); // Wait for animation to finish before deleting
     }
   };
 

@@ -72,7 +72,7 @@ export default function StreakCounter({ habit, pulse }) {
   }, [pulse]);
 
   return (
-    <div className="text-sm font-semibold mt-2">
+    <div className="text-sm font-semibold mt-2 ">
       <div className="flex flex-wrap justify-center items-center text-center gap-4 my-4">
         <div
           className={`w-full sm:w-auto transition-all duration-500 ${

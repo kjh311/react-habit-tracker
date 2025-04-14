@@ -3,10 +3,15 @@ import { DayThemeContext } from "./App";
 import Button from "./Button";
 import Input from "./Input";
 
-export default function AddUserHabits({ habits, setHabits, loading }) {
+export default function AddUserHabits({
+  habits,
+  setHabits,
+  loading,
+  setNewHabitId,
+}) {
   const [habitInput, setHabitInput] = useState("");
-  const [dayTheme, setDayTheme] = useContext(DayThemeContext);
-  const [habitAdded, setHabitAdded] = useState(false); // State to manage the floating message
+  const [dayTheme] = useContext(DayThemeContext);
+  const [habitAdded, setHabitAdded] = useState(false);
 
   const handleAddHabit = (e) => {
     e.preventDefault();
@@ -19,15 +24,14 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
       calendar: [],
     };
 
-    const updatedHabits = [...habits, newHabit];
+    const updatedHabits = [newHabit, ...habits];
 
     localStorage.setItem("habitTrackerHabits", JSON.stringify(updatedHabits));
     setHabits(updatedHabits);
-
+    setNewHabitId(newHabit.id);
     setHabitInput("");
-    setHabitAdded(true); // Trigger the floating message
+    setHabitAdded(true);
 
-    // Hide the message after 2 seconds
     setTimeout(() => setHabitAdded(false), 2000);
   };
 
@@ -66,8 +70,15 @@ export default function AddUserHabits({ habits, setHabits, loading }) {
         <div className="text-center">"LOADING..."</div>
       )}
 
-      {/* Floating message animation */}
-      {habitAdded && <div className="floating-message">Habit Added!</div>}
+      {habitAdded && (
+        <div
+          className={`floating-message ${
+            dayTheme ? "floating-message-day" : "floating-message-night"
+          }`}
+        >
+          Habit Added!
+        </div>
+      )}
     </div>
   );
 }
