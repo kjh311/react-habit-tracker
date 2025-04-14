@@ -31,6 +31,26 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
     }
   }, [newHabitId]);
 
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const monthLabels = document.getElementsByClassName(
+        "react-calendar-heatmap-month-label"
+      );
+
+      for (let i = 0; i < monthLabels.length; i++) {
+        if (dayTheme) {
+          monthLabels[i].classList.add("month-label-day");
+          monthLabels[i].classList.remove("month-label-night");
+        } else {
+          monthLabels[i].classList.add("month-label-night");
+          monthLabels[i].classList.remove("month-label-day");
+        }
+      }
+    }, 100); // Adjust delay as needed
+
+    return () => clearTimeout(timeout);
+  }, [dayTheme]);
+
   return (
     <div className="show-habits">
       <GetWindowSize setMonthsToShow={setMonthsToShow} setWidth={setWidth} />
@@ -77,7 +97,7 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                     pulse={pulseHabitId === habit.id}
                   />
                 </div>
-                {console.log("Calendar", habit.calendar)}
+                {/* {console.log("Calendar", habit.calendar)} */}
                 <ReactCalendarHeatmap
                   startDate={startDate}
                   endDate={new Date(today)}

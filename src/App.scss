@@ -313,3 +313,15 @@
   visibility: visible; /* Tooltip becomes visible on hover */
   opacity: 1; /* Fade in */
 }
+
+.month-label-day{
+  transition: all;
+  transition-duration: 500;
+  fill: black !important;
+}
+
+.month-label-night{
+  transition: all;
+  transition-duration: 500;
+  fill: white !important;
+}
