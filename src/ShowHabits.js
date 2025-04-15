@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import CalendarHeatmap from "react-calendar-heatmap";
+// import CalendarHeatmap from "react-calendar-heatmap";
 import DeleteHabit from "./DeleteHabit";
 import "react-calendar-heatmap/dist/styles.css";
 import "./heatmap-custom.css";
@@ -8,7 +8,8 @@ import StreakCounter from "./StreakCounter";
 import GetWindowSize from "./GetWindowSize";
 import { DayThemeContext } from "./App";
 import { AnimatePresence, motion } from "framer-motion";
-import ReactTooltip from "react-tooltip";
+// import ReactTooltip from "react-tooltip";
+import HabitCalendarHeatmap from "./HabitCalendarHeatmap";
 
 const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
   const [deletingHabitId, setDeletingHabitId] = useState(null);
@@ -31,26 +32,6 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
   //       return () => clearTimeout(timer);
   //     }
   //   }, [newHabitId]);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      const monthLabels = document.getElementsByClassName(
-        "react-calendar-heatmap-month-label"
-      );
-
-      for (let i = 0; i < monthLabels.length; i++) {
-        if (dayTheme) {
-          monthLabels[i].classList.add("month-label-day");
-          monthLabels[i].classList.remove("month-label-night");
-        } else {
-          monthLabels[i].classList.add("month-label-night");
-          monthLabels[i].classList.remove("month-label-day");
-        }
-      }
-    }, 100);
-
-    return () => clearTimeout(timeout);
-  }, [dayTheme, width, habits]);
 
   return (
     <div className="show-habits">
@@ -99,37 +80,14 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                   />
                 </div>
 
-                <CalendarHeatmap
-                  className="calendar-heatmap"
+                <HabitCalendarHeatmap
+                  habit={habit}
                   startDate={startDate}
                   endDate={new Date(today)}
-                  values={habit.calendar || []}
-                  classForValue={(value) => {
-                    const count = value ? value.count : 0;
-                    return !value
-                      ? "color-empty"
-                      : `color-scale-${Math.min(count, 4)}`;
-                  }}
-                  tooltipDataAttrs={(value) => {
-                    const dateStr =
-                      value && value.date
-                        ? new Date(value.date + "T12:00:00").toLocaleDateString(
-                            "en-CA",
-                            {
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            }
-                          )
-                        : "";
-                    return {
-                      "data-tip": `${dateStr} Points: ${value?.count ?? 0}`,
-                    };
-                  }}
-                  showWeekdayLabels={false}
+                  dayTheme={dayTheme}
+                  width={width}
+                  habits={habits}
                 />
-
-                <ReactTooltip />
 
                 <br />
                 <ul className="inlineUL pt-4 text-right">
