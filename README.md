@@ -1,6 +1,6 @@
 # **React Habit Tracker**
 
-# Demo: https://kjh311.github.io/react-habit-tracker/
+Demo: https://kjh311.github.io/react-habit-tracker/
 
 1. Github style Calendar
 2. Persists data to Local Storage
