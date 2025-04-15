@@ -8,12 +8,12 @@
 
 ### Desktop:
 
-![alt text](public/assets/Desktop.png)
+![alt text](/assets/Desktop.png)
 
 ### Mobile Day Theme:
 
-![alt text](public/assets/Mobile-Day.png)
+![alt text](/assets/Mobile-Day.png)
 
 ### Mobile Night Theme:
 
-![alt text](public/assets/Mobile-Night.png)
+![alt text](/assets/Mobile-Night.png)
