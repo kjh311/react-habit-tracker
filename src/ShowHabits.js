@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import DeleteHabit from "./DeleteHabit";
 import MarkAsCompleted from "./MarkAsCompleted";
 import StreakCounter from "./StreakCounter";
-import { DayThemeContext } from "./App";
+import { DayThemeContext, NameContext } from "./App";
 import { AnimatePresence, motion } from "framer-motion";
 import HabitCalendarHeatmap from "./HabitCalendarHeatmap";
 
@@ -11,6 +11,7 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
   //   const [pulseHabitId, setPulseHabitId] = useState(null);
   const [dayTheme] = useContext(DayThemeContext);
   const [monthsToShow, setMonthsToShow] = useState(6);
+  const [name, setName] = useContext(NameContext);
 
   const todayDate = new Date();
   const today = todayDate.toISOString().split("T")[0];
@@ -29,7 +30,7 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
 
   return (
     <div className="show-habits">
-      {!loading && habits.length > 0 ? (
+      {!loading && habits.length > 0 && name !== "" ? (
         <div
           className={`text-center card transition-all duration-500 ${
             dayTheme
