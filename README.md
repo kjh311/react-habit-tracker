@@ -2,11 +2,11 @@
 
 Demo: https://kjh311.github.io/react-habit-tracker/
 
-1. Github style Calendar
-2. Persists data to Local Storage
-3. Day/Night Theme
-4. Streak Counter
-5. Multiple Habits tracked
+1. Github style Calendar.
+2. Persists data to Local Storage.
+3. Day/Night Theme. Theme persists between rerenders.
+4. Streak Counter. Current streak and max streak.
+5. Multiple Habits tracked.
 
 ### Desktop:
 
