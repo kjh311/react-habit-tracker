@@ -537,6 +537,11 @@
   scale: 1;
   -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
           box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+          @media (max-width: 768px) {
+            -webkit-box-shadow: none;
+          box-shadow: none;
+          scale: 0.95 !important;
+          }
 }
 
 .react-calendar-heatmap{
