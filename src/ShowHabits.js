@@ -110,23 +110,33 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                       ? "color-empty"
                       : `color-scale-${Math.min(count, 4)}`;
                   }}
-                  transformDayElement={(el, value) => {
-                    const count = value?.count || 0;
-                    const labelDate = value?.date
-                      ? new Date(value.date).toLocaleDateString("en-US", {
-                          month: "long",
-                          day: "numeric",
-                          year: "numeric",
-                        })
-                      : "No date";
-                    const labelCount = count
-                      ? `Points: ${count}`
+                  transformDayElement={(rect, value, index) => {
+                    // Calculate the date even if value is null
+                    const date =
+                      value?.date ??
+                      new Date(
+                        startDate.getTime() + index * 24 * 60 * 60 * 1000
+                      )
+                        .toISOString()
+                        .split("T")[0];
+
+                    const labelDate = new Date(date).toLocaleDateString(
+                      "en-US",
+                      {
+                        month: "long",
+                        day: "numeric",
+                        year: "numeric",
+                      }
+                    );
+
+                    const labelCount = value?.count
+                      ? `Count: ${value.count}`
                       : "No activity";
 
                     return (
                       <Tooltip.Provider delayDuration={100}>
                         <Tooltip.Root>
-                          <Tooltip.Trigger asChild>{el}</Tooltip.Trigger>
+                          <Tooltip.Trigger asChild>{rect}</Tooltip.Trigger>
                           <Tooltip.Portal>
                             <Tooltip.Content
                               side="top"
