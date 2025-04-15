@@ -74,7 +74,11 @@ export default function StreakCounter({ habit, pulse }) {
 
   return (
     <div className="font-semibold mt-2 ">
-      <div className={`my-4 columns-${window.innerWidth >= 768 ? "3" : "1"}`}>
+      <div
+        className={`my-4 ${
+          window.innerWidth >= 768 ? "columns-3" : "columns-1"
+        }`}
+      >
         <div
           className={`w-full sm:w-auto transition-all duration-500 ${
             dayTheme ? "day-text" : "night-text"

@@ -406,29 +406,25 @@
 
 rect{
   // cursor: pointer;
-  pointer-events: none;
+  // pointer-events: none;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-  border-bottom: 1px dotted black;
+
+
+// .tooltip {
+//   position: absolute;
+//   background-color: black;
+//   color: white;
+//   padding: 5px 10px;
+//   border-radius: 5px;
+//   font-size: 12px;
+//   z-index: 100;
+// }
+
+.tooltip-show{
+  display: inline;;
 }
 
- .tooltiptext {
-  visibility: hidden;
-  width: 120px;
-  background-color: black;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-
-  /* Position the tooltip */
-  position: absolute;
-  z-index: 1;
-}
-
- .tooltiptext {
-  visibility: visible;
+.tooltip-hide{
+  display: none;
 }
