@@ -1,14 +1,9 @@
-import { useState, useContext, useEffect } from "react";
-// import CalendarHeatmap from "react-calendar-heatmap";
+import { useState, useContext } from "react";
 import DeleteHabit from "./DeleteHabit";
-import "react-calendar-heatmap/dist/styles.css";
-import "./heatmap-custom.css";
 import MarkAsCompleted from "./MarkAsCompleted";
 import StreakCounter from "./StreakCounter";
-import GetWindowSize from "./GetWindowSize";
 import { DayThemeContext } from "./App";
 import { AnimatePresence, motion } from "framer-motion";
-// import ReactTooltip from "react-tooltip";
 import HabitCalendarHeatmap from "./HabitCalendarHeatmap";
 
 const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
@@ -16,7 +11,6 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
   //   const [pulseHabitId, setPulseHabitId] = useState(null);
   const [dayTheme] = useContext(DayThemeContext);
   const [monthsToShow, setMonthsToShow] = useState(6);
-  const [width, setWidth] = useState(window.innerWidth);
 
   const todayDate = new Date();
   const today = todayDate.toISOString().split("T")[0];
@@ -35,8 +29,6 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
 
   return (
     <div className="show-habits">
-      <GetWindowSize setMonthsToShow={setMonthsToShow} setWidth={setWidth} />
-
       {!loading && habits.length > 0 ? (
         <div
           className={`text-center card transition-all duration-500 ${
@@ -55,13 +47,14 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                 transition={{ duration: 0.3 }}
                 className={`habit-card relative transition-all duration-500 ${
                   dayTheme ? "dayTheme3 text-black" : "nightTheme2 text-white"
-                } rounded-lg p-2 m-2 ${
-                  deletingHabitId === habit.id
-                    ? "habit-fade-out"
-                    : newHabitId === habit.id
-                    ? "habit-fade-in"
-                    : ""
-                }`}
+                } rounded-lg p-2 m-2 `}
+                // ${
+                //   deletingHabitId === habit.id
+                //     ? "habit-fade-out"
+                //     : newHabitId === habit.id
+                //     ? "habit-fade-in"
+                //     : ""
+                // }
               >
                 <DeleteHabit
                   id={habit.id}
@@ -74,6 +67,7 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                   <div className="habit-name font-bold text-xl">
                     {habit.name}
                   </div>
+
                   <StreakCounter
                     habit={habit}
                     // pulse={pulseHabitId === habit.id}
@@ -82,11 +76,11 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
 
                 <HabitCalendarHeatmap
                   habit={habit}
-                  startDate={startDate}
-                  endDate={new Date(today)}
                   dayTheme={dayTheme}
-                  width={width}
                   habits={habits}
+                  monthsToShow={monthsToShow}
+                  startDate={startDate}
+                  setMonthsToShow={setMonthsToShow}
                 />
 
                 <br />

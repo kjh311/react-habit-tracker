@@ -1,18 +1,22 @@
 // HabitCalendarHeatmap.js
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
 import ReactTooltip from "react-tooltip";
+import GetWindowSize from "./GetWindowSize";
+import "react-calendar-heatmap/dist/styles.css";
+import "./heatmap-custom.css";
 
 const HabitCalendarHeatmap = ({
   habit,
-  startDate,
   endDate,
   dayTheme,
-  width,
+  startDate,
+  monthsToShow,
+  setMonthsToShow,
   habits,
 }) => {
-  const todayDate = new Date();
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -36,6 +40,8 @@ const HabitCalendarHeatmap = ({
 
   return (
     <>
+      <GetWindowSize setMonthsToShow={setMonthsToShow} setWidth={setWidth} />
+
       <CalendarHeatmap
         className="calendar-heatmap"
         startDate={startDate}
