@@ -3,7 +3,7 @@ export default function MarkAsCompleted({
   habit,
   setHabits,
   today,
-  setPulseHabitId,
+  //   setPulseHabitId,
 }) {
   const markAsCompleted = () => {
     const updatedHabits =
@@ -26,8 +26,8 @@ export default function MarkAsCompleted({
     localStorage.setItem("habitTrackerHabits", JSON.stringify(updated));
     setHabits(updated);
 
-    setPulseHabitId(habit.id); // trigger pulse
-    setTimeout(() => setPulseHabitId(null), 400); // remove pulse after short delay
+    // setPulseHabitId(habit.id); // trigger pulse
+    // setTimeout(() => setPulseHabitId(null), 400); // remove pulse after short delay
   };
 
   return (

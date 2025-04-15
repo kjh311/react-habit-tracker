@@ -80,7 +80,7 @@ export default function StreakCounter({ habit, pulse }) {
         }`}
       >
         <div
-          className={`w-full sm:w-auto transition-all duration-500 ${
+          className={`streak-text w-full sm:w-auto transition-all duration-500 ${
             dayTheme ? "day-text" : "night-text"
           }`}
         >
@@ -88,14 +88,14 @@ export default function StreakCounter({ habit, pulse }) {
           {currentStreak !== 1 ? "s" : ""}
         </div>
         <div
-          className={`w-full sm:w-auto transition-all duration-500 ${
+          className={`streak-text w-full sm:w-auto transition-all duration-500 ${
             dayTheme ? "day-text" : "night-text"
           }`}
         >
           🏆 Longest Streak: {longestStreak} day{longestStreak !== 1 ? "s" : ""}
         </div>
         <div
-          className={`w-full sm:w-auto transition-all duration-500 ${
+          className={`streak-text w-full sm:w-auto transition-all duration-500 ${
             dayTheme ? "day-text" : "night-text"
           }`}
         >

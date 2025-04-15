@@ -12,7 +12,7 @@ import ReactTooltip from "react-tooltip";
 
 const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
   const [deletingHabitId, setDeletingHabitId] = useState(null);
-  const [pulseHabitId, setPulseHabitId] = useState(null);
+  //   const [pulseHabitId, setPulseHabitId] = useState(null);
   const [dayTheme] = useContext(DayThemeContext);
   const [monthsToShow, setMonthsToShow] = useState(6);
   const [width, setWidth] = useState(window.innerWidth);
@@ -25,12 +25,12 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
     1
   );
 
-  useEffect(() => {
-    if (newHabitId) {
-      const timer = setTimeout(() => setPulseHabitId(null), 1000);
-      return () => clearTimeout(timer);
-    }
-  }, [newHabitId]);
+  //   useEffect(() => {
+  //     if (newHabitId) {
+  //       const timer = setTimeout(() => setPulseHabitId(null), 1000);
+  //       return () => clearTimeout(timer);
+  //     }
+  //   }, [newHabitId]);
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -72,7 +72,7 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 20, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className={`relative border transition-all duration-500 ${
+                className={`habit-card relative transition-all duration-500 ${
                   dayTheme ? "dayTheme3 text-black" : "nightTheme2 text-white"
                 } rounded-lg p-2 m-2 ${
                   deletingHabitId === habit.id
@@ -86,15 +86,16 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                   id={habit.id}
                   habits={habits}
                   setHabits={setHabits}
-                  onDeleteStart={() => setDeletingHabitId(habit.id)}
+                  //   onDeleteStart={() => setDeletingHabitId(habit.id)}
                 />
+
                 <div className="mx-auto text-center object-center relative">
                   <div className="habit-name font-bold text-xl">
                     {habit.name}
                   </div>
                   <StreakCounter
                     habit={habit}
-                    pulse={pulseHabitId === habit.id}
+                    // pulse={pulseHabitId === habit.id}
                   />
                 </div>
 
@@ -112,11 +113,14 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                   tooltipDataAttrs={(value) => {
                     const dateStr =
                       value && value.date
-                        ? new Date(value.date).toLocaleDateString("en-US", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                          })
+                        ? new Date(value.date + "T12:00:00").toLocaleDateString(
+                            "en-CA",
+                            {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric",
+                            }
+                          )
                         : "";
                     return {
                       "data-tip": `${dateStr} Points: ${value?.count ?? 0}`,
@@ -144,7 +148,7 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                   habit={habit}
                   setHabits={setHabits}
                   today={today}
-                  setPulseHabitId={setPulseHabitId}
+                  //   setPulseHabitId={setPulseHabitId}
                 />
               </motion.div>
             ))}

@@ -13,7 +13,7 @@ export default function Navbar() {
 
   return (
     <div
-      className={`sticky top-0 z-50 p-2 text-center transition-colors duration-500 ${
+      className={`navbar sticky top-0 z-50 p-2 text-center transition-colors duration-500 ${
         dayTheme
           ? "dayTheme2 text-black nav-day"
           : "nightTheme2 text-white nav-night"
