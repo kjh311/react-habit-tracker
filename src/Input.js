@@ -1,7 +1,7 @@
 import { DayThemeContext } from "./App";
 import { useContext } from "react";
 
-const Input = ({ placeholder, onChange, value }) => {
+const Input = ({ placeholder, onChange, value, maxLength, minLength }) => {
   const [dayTheme, setDayTheme] = useContext(DayThemeContext);
 
   return (
@@ -13,6 +13,8 @@ const Input = ({ placeholder, onChange, value }) => {
       value={value}
       placeholder={placeholder}
       onChange={onChange}
+      maxLength={maxLength}
+      minLength={minLength}
     />
   );
 };

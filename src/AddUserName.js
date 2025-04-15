@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { NameContext, DayThemeContext } from "./App";
 import Button from "./Button";
 import Input from "./Input";
@@ -7,6 +7,11 @@ export default function AddUserName({ loading }) {
   const [name, setName] = useContext(NameContext);
   const [dayTheme, setDayTheme] = useContext(DayThemeContext);
   const [nameInput, setNameInput] = useState("");
+  const [inputLength, setInputLength] = useState(0);
+
+  useEffect(() => {
+    setInputLength(nameInput.length);
+  }, [nameInput]);
 
   //ADD USER NAME
   const handleAddName = (e) => {
@@ -47,11 +52,23 @@ export default function AddUserName({ loading }) {
             </p>
 
             <Input
-              placeholder={"Enter your name:"}
+              placeholder={"First name:"}
+              minLength={1}
+              maxLength={15}
               value={nameInput}
               onChange={(e) => setNameInput(e.target.value)}
             />
             <br />
+
+            {inputLength === 15 && (
+              <div
+                className={`max-length transition-all duration-500 ${
+                  dayTheme ? "text-red-500" : "text-white"
+                }`}
+              >
+                15 Characters max!
+              </div>
+            )}
             <Button text={"Submit Name"} type={"submit"} />
           </form>
         </div>

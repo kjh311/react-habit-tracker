@@ -392,8 +392,9 @@
 .habit-name{
   @include variables.poetsen;
   font-size: 3em;
-  margin-top: 20px;
+  margin: 20px 30px 10px 30px;
   padding-bottom: 20px;
+  word-wrap: break-word;
   @media (max-width: 768px) {
     font-size: 1.6em;
   }

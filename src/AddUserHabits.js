@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { DayThemeContext } from "./App";
 import Button from "./Button";
 import Input from "./Input";
@@ -12,6 +12,11 @@ export default function AddUserHabits({
   const [habitInput, setHabitInput] = useState("");
   const [dayTheme] = useContext(DayThemeContext);
   const [habitAdded, setHabitAdded] = useState(false);
+  const [habitLength, setHabitLength] = useState(0);
+
+  useEffect(() => {
+    setHabitLength(habitInput.length);
+  }, [habitInput]);
 
   const handleAddHabit = (e) => {
     e.preventDefault();
@@ -62,8 +67,19 @@ export default function AddUserHabits({
             placeholder={"Enter a new habit:"}
             value={habitInput}
             onChange={(e) => setHabitInput(e.target.value)}
+            maxLength={20}
+            minLength={1}
           />
           <br />
+          {habitLength === 20 && (
+            <div
+              className={`max-length transition-all duration-500 ${
+                dayTheme ? "text-red-500" : "text-white"
+              }`}
+            >
+              20 Characters max!
+            </div>
+          )}
           <Button type={"submit"} text={"Add Habit"} />
         </form>
       ) : (
