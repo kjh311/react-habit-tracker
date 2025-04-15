@@ -133,9 +133,21 @@ svg.react-calendar-heatmap {
   position: relative !important;
 }
 
-.border-square {
-  /* border: 5px solid black !important; */
-  /* border: 1px solid #ccc; Outer border */
-  /* outline: 1px solid #000; Inner outline */
-  /* outline-offset: -1px; */
+.border-square:hover {
+  border: 5px solid transparent !important;
+  border: 1px solid transparent !important;
+  outline: 1px solid transparent !important;
+  outline-offset: -1px !important;
+}
+
+/* In your heatmap-custom.css or global CSS */
+rect {
+  outline: none !important;
+  border: none !important;
+}
+
+/* If you want to ensure it stays clean on hover */
+rect:hover {
+  outline: none !important;
+  border: none !important;
 }

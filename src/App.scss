@@ -405,7 +405,8 @@
 }
 
 rect{
-  cursor: pointer;
+  // cursor: pointer;
+  pointer-events: none;
 }
 
 .tooltip {

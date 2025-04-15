@@ -92,66 +92,57 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                   <div className="habit-name font-bold text-xl">
                     {habit.name}
                   </div>
-
                   <StreakCounter
                     habit={habit}
                     pulse={pulseHabitId === habit.id}
                   />
                 </div>
 
-                <ReactCalendarHeatmap
-                  startDate={startDate}
-                  endDate={new Date(today)}
-                  values={habit.calendar || []}
-                  className="calendar-heatmap"
-                  classForValue={(value) => {
-                    const count = value ? value.count : 0;
-                    return !value
-                      ? "color-empty"
-                      : `color-scale-${Math.min(count, 4)}`;
-                  }}
-                  transformDayElement={(rect, value, index) => {
-                    // Calculate the date even if value is null
-                    const date =
-                      value?.date ??
-                      new Date(
-                        startDate.getTime() + index * 24 * 60 * 60 * 1000
-                      )
-                        .toISOString()
-                        .split("T")[0];
+                <Tooltip.Provider>
+                  <ReactCalendarHeatmap
+                    className="calendar-heatmap"
+                    startDate={startDate}
+                    endDate={new Date(today)}
+                    values={habit.calendar || []}
+                    classForValue={(value) => {
+                      const count = value ? value.count : 0;
+                      return !value
+                        ? "color-empty"
+                        : `color-scale-${Math.min(count, 4)}`;
+                    }}
+                    tooltipDataAttrs={(value) => {
+                      if (!value || !value.date) return null;
 
-                    const labelDate = new Date(date).toLocaleDateString(
-                      "en-US",
-                      {
-                        month: "long",
-                        day: "numeric",
-                        year: "numeric",
-                      }
-                    );
+                      return {
+                        "data-tooltip": `${value.date} — ${
+                          value.count ?? 0
+                        } completed`,
+                      };
+                    }}
+                    showWeekdayLabels={false}
+                    renderTooltip={(value) => {
+                      if (!value || !value.date) return null;
 
-                    const labelCount = value?.count
-                      ? `Count: ${value.count}`
-                      : "No activity";
-
-                    return (
-                      <Tooltip.Provider delayDuration={100}>
-                        <Tooltip.Root>
-                          <Tooltip.Trigger asChild>{rect}</Tooltip.Trigger>
+                      return (
+                        <Tooltip.Root key={value.date}>
+                          <Tooltip.Trigger asChild>
+                            <rect />
+                          </Tooltip.Trigger>
                           <Tooltip.Portal>
                             <Tooltip.Content
                               side="top"
                               align="center"
                               className="z-50 rounded bg-black text-white px-2 py-1 text-sm shadow"
                             >
-                              {labelDate} — {labelCount}
+                              {value.date} — {value.count ?? 0} completed
                               <Tooltip.Arrow className="fill-black" />
                             </Tooltip.Content>
                           </Tooltip.Portal>
                         </Tooltip.Root>
-                      </Tooltip.Provider>
-                    );
-                  }}
-                />
+                      );
+                    }}
+                  />
+                </Tooltip.Provider>
 
                 <br />
                 <ul className="inlineUL pt-4 text-right">
