@@ -14,8 +14,14 @@ export default function AddUserName({ loading }) {
 
     if (!nameInput.trim()) return;
 
-    localStorage.setItem("habitTrackerUserName", nameInput);
-    setName(nameInput);
+    const upperCase = (nameInput) => {
+      return (
+        nameInput.charAt(0).toUpperCase() + nameInput.slice(1).toLowerCase()
+      );
+    };
+
+    localStorage.setItem("habitTrackerUserName", upperCase(nameInput));
+    setName(upperCase(nameInput));
     setNameInput("");
   };
 
