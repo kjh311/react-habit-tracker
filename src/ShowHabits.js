@@ -16,8 +16,6 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
   const [dayTheme] = useContext(DayThemeContext);
   const [monthsToShow, setMonthsToShow] = useState(6);
   const [width, setWidth] = useState(window.innerWidth);
-  const [toolTipText, setToolTipText] = useState("");
-  const [hover, setHover] = useState(false);
 
   const todayDate = new Date();
   const today = todayDate.toISOString().split("T")[0];
@@ -53,18 +51,6 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
 
     return () => clearTimeout(timeout);
   }, [dayTheme, width, habits]);
-
-  const handleMouseOver = (value) => {
-    // Log the date and count when mouseover happens
-    setHover(true);
-    if (value && value.date) {
-      console.log(`Date: ${value.date}, Points: ${value.count}`);
-      setToolTipText(`Date: ${value.date}, Points: ${value.count}`);
-    } else {
-      console.log("no data");
-      setToolTipText("No Data");
-    }
-  };
 
   return (
     <div className="show-habits">
@@ -123,27 +109,24 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                       ? "color-empty"
                       : `color-scale-${Math.min(count, 4)}`;
                   }}
+                  tooltipDataAttrs={(value) => {
+                    const dateStr =
+                      value && value.date
+                        ? new Date(value.date).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })
+                        : "";
+                    return {
+                      "data-tip": `${dateStr} Points: ${value?.count ?? 0}`,
+                    };
+                  }}
                   showWeekdayLabels={false}
-                  //   renderTooltip={(value) => {
-                  //     if (!value || !value.date) return null;
-
-                  //     return (
-                  //       <div className="tooltip">
-                  //         {value.date} — {value.count ?? 0} completed
-                  //       </div>
-                  //     );
-                  //   }}
-                  //   rectProps={{
-                  //     onMouseOver: (e, value) => handleMouseOver(value),
-                  //   }}
-
-                  onMouseOver={(e, value) => {
-                    handleMouseOver(value);
-                  }}
-                  onMouseLeave={() => {
-                    setHover(false);
-                  }}
                 />
+
+                <ReactTooltip />
+
                 <br />
                 <ul className="inlineUL pt-4 text-right">
                   <li className="less">Less</li>
@@ -156,14 +139,7 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                 </ul>
 
                 <br />
-                <span
-                  className={`tooltip ${
-                    hover ? "tooltip-show" : "tooltip-hide"
-                  }`}
-                >
-                  {toolTipText}
-                </span>
-                <br />
+
                 <MarkAsCompleted
                   habit={habit}
                   setHabits={setHabits}
