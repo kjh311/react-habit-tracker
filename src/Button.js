@@ -8,9 +8,9 @@ const Button = ({ text, type, onClick }) => {
     <button
       type={type}
       onClick={onClick}
-      className={`p-2 m-2 rounded-lg transition-all duration-500 ${
+      className={`button p-2 m-2 rounded-lg transition-all duration-500 ${
         dayTheme ? "day-button" : "night-button"
-      }`}
+      } ${window.innerWidth >= 768 && "button-hover"}`}
     >
       {text}
     </button>

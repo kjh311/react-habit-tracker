@@ -8,6 +8,7 @@ import StreakCounter from "./StreakCounter";
 import GetWindowSize from "./GetWindowSize";
 import { DayThemeContext } from "./App";
 import { AnimatePresence, motion } from "framer-motion";
+import * as Tooltip from "@radix-ui/react-tooltip";
 
 const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
   const [deletingHabitId, setDeletingHabitId] = useState(null);
@@ -46,10 +47,10 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
           monthLabels[i].classList.remove("month-label-day");
         }
       }
-    }, 100); // Adjust delay as needed
+    }, 100);
 
     return () => clearTimeout(timeout);
-  }, [dayTheme]);
+  }, [dayTheme, width, habits]);
 
   return (
     <div className="show-habits">
@@ -97,29 +98,47 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                     pulse={pulseHabitId === habit.id}
                   />
                 </div>
-                {/* {console.log("Calendar", habit.calendar)} */}
+
                 <ReactCalendarHeatmap
                   startDate={startDate}
                   endDate={new Date(today)}
                   values={habit.calendar || []}
+                  className="calendar-heatmap"
                   classForValue={(value) => {
                     const count = value ? value.count : 0;
                     return !value
                       ? "color-empty"
-                      : `color-scale-${Math.min(count, 10)} border-square`;
+                      : `color-scale-${Math.min(count, 4)}`;
                   }}
-                  renderCustomCell={(value) => {
+                  transformDayElement={(el, value) => {
+                    const count = value?.count || 0;
+                    const labelDate = value?.date
+                      ? new Date(value.date).toLocaleDateString("en-US", {
+                          month: "long",
+                          day: "numeric",
+                          year: "numeric",
+                        })
+                      : "No date";
+                    const labelCount = count
+                      ? `Points: ${count}`
+                      : "No activity";
+
                     return (
-                      <div
-                        className={`react-calendar-heatmap-cell ${
-                          value
-                            ? `color-scale-${Math.min(value.count, 4)}`
-                            : "color-empty"
-                        }`}
-                        data-tooltip={`Count for ${
-                          value?.date || "No count"
-                        }: ${value?.count || "0"}`}
-                      />
+                      <Tooltip.Provider delayDuration={100}>
+                        <Tooltip.Root>
+                          <Tooltip.Trigger asChild>{el}</Tooltip.Trigger>
+                          <Tooltip.Portal>
+                            <Tooltip.Content
+                              side="top"
+                              align="center"
+                              className="z-50 rounded bg-black text-white px-2 py-1 text-sm shadow"
+                            >
+                              {labelDate} — {labelCount}
+                              <Tooltip.Arrow className="fill-black" />
+                            </Tooltip.Content>
+                          </Tooltip.Portal>
+                        </Tooltip.Root>
+                      </Tooltip.Provider>
                     );
                   }}
                 />

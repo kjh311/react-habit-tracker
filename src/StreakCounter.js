@@ -1,12 +1,13 @@
 import { useEffect, useState, useContext } from "react";
 import { DayThemeContext } from "./App";
+import { motion } from "framer-motion";
 
 export default function StreakCounter({ habit, pulse }) {
   const [currentStreak, setCurrentStreak] = useState(0);
   const [longestStreak, setLongestStreak] = useState(0);
   const [totalCount, setTotalCount] = useState(0);
   const [dayTheme] = useContext(DayThemeContext);
-  const [isPulsing, setIsPulsing] = useState(false);
+  // const [isPulsing, setIsPulsing] = useState(false);
 
   useEffect(() => {
     if (!habit?.calendar || habit.calendar.length === 0) return;
@@ -63,23 +64,24 @@ export default function StreakCounter({ habit, pulse }) {
   }, [habit]);
 
   // ✅ only pulse when `pulse` prop is true
-  useEffect(() => {
-    if (pulse) {
-      setIsPulsing(true);
-      const timer = setTimeout(() => setIsPulsing(false), 300);
-      return () => clearTimeout(timer);
-    }
-  }, [pulse]);
+  // useEffect(() => {
+  //   if (pulse) {
+  //     setIsPulsing(true);
+  //     const timer = setTimeout(() => setIsPulsing(false), 300);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [pulse]);
 
   return (
-    <div className="text-sm font-semibold mt-2 ">
-      <div className="flex flex-wrap justify-center items-center text-center gap-4 my-4">
+    <div className="font-semibold mt-2 ">
+      <div className={`my-4 columns-${window.innerWidth >= 768 ? "3" : "1"}`}>
         <div
           className={`w-full sm:w-auto transition-all duration-500 ${
             dayTheme ? "day-text" : "night-text"
           }`}
         >
-          🔥 Current Streak: {currentStreak} day{currentStreak !== 1 ? "s" : ""}
+          🔥 Current Streak: {currentStreak} day
+          {currentStreak !== 1 ? "s" : ""}
         </div>
         <div
           className={`w-full sm:w-auto transition-all duration-500 ${
@@ -91,9 +93,9 @@ export default function StreakCounter({ habit, pulse }) {
         <div
           className={`w-full sm:w-auto transition-all duration-500 ${
             dayTheme ? "day-text" : "night-text"
-          } ${isPulsing ? "animate-pulse" : ""}`}
+          }`}
         >
-          ⭐ Total Count: {totalCount}
+          ⭐ Total Points: {totalCount}
         </div>
       </div>
     </div>

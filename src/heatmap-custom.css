@@ -132,3 +132,10 @@ svg.react-calendar-heatmap {
   margin: 0 auto !important;
   position: relative !important;
 }
+
+.border-square {
+  /* border: 5px solid black !important; */
+  /* border: 1px solid #ccc; Outer border */
+  /* outline: 1px solid #000; Inner outline */
+  /* outline-offset: -1px; */
+}

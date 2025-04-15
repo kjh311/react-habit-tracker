@@ -32,7 +32,7 @@ export default function MarkAsCompleted({
 
   return (
     <div className="text-center">
-      <Button onClick={markAsCompleted} text={"Mark as Completed Today"} />
+      <Button onClick={markAsCompleted} text={"+1 Point for Today"} />
     </div>
   );
 }

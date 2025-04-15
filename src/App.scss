@@ -19,6 +19,7 @@
   position: relative;
   // flex: 1;
   padding-bottom: 70px;
+  @include variables.poetsen;
 }
 
 .card {
@@ -116,6 +117,9 @@
   background-color: variables.$day-theme4;
   color: black;
   border: 2px solid black;
+  transition: all;
+  transition-duration: 500ms;
+  
 }
 
 .day-button:hover {
@@ -128,6 +132,14 @@
   background-color: variables.$night-theme3;
   color: white;
 }
+
+.day-button:active {
+  // background-color: variables.$day-theme4;
+  // scale: 1; 
+  // transition: all;
+  // transition-duration: 500ms;
+}
+
 
 .night-button:hover {
   background-color: variables.$night-theme6;
@@ -169,6 +181,9 @@
 .nav-title{
   @include variables.poetsen;
   font-size: 2em;
+  @media (max-width: 768px) {
+    font-size: 1.2em;
+  }
 }
 
 .night-text{
@@ -364,4 +379,55 @@
 .icon:hover{
   // border-radius: 50% !important;
   
+}
+
+.button{
+  transition: all !important;
+  transition-duration: 200ms !important;
+  scale: 1;
+}
+
+.button-hover:hover{
+  transition: all !important;
+  transition-duration: 200ms !important;
+  scale: 1.08;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+}
+
+.button:active{
+  scale: 1;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+}
+
+.react-calendar-heatmap{
+  padding: 12px !important;
+  
+}
+
+rect{
+  cursor: pointer;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+
+ .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+ .tooltiptext {
+  visibility: visible;
 }
