@@ -479,8 +479,10 @@
   -webkit-transition-duration: 200ms !important;
        -o-transition-duration: 200ms !important;
           transition-duration: 200ms !important;
-  scale: 1
-  
+  scale: 1;
+  @media (max-width: 768px) {
+    right: -5px !important;
+  }
 }
 
 .deleteHabit-hover:hover{
