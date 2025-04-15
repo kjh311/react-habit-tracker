@@ -8,18 +8,8 @@ import HabitTracker from "./HabitTracker";
 export const NameContext = React.createContext();
 export const DayThemeContext = React.createContext();
 
-function Home() {
-  return (
-    <div>
-      {/* <h1>Home</h1> */}
-      <p>React Habit Tracker</p>
-      {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
-    </div>
-  );
-}
-
 function App() {
-  console.log("Environment:", process.env.NODE_ENV);
+  // console.log("Environment:", process.env.NODE_ENV);
   const [name, setName] = useState("");
   const [dayTheme, setDayTheme] = useState(true);
 

@@ -12,7 +12,6 @@ const HabitCalendarHeatmap = ({
   endDate,
   dayTheme,
   startDate,
-  monthsToShow,
   setMonthsToShow,
   habits,
 }) => {
@@ -46,7 +45,9 @@ const HabitCalendarHeatmap = ({
         className="calendar-heatmap"
         startDate={startDate}
         endDate={endDate}
-        values={habit.calendar || []}
+        values={(habit.calendar || []).filter(
+          (v) => v?.date && !isNaN(new Date(v.date).getTime())
+        )}
         classForValue={(value) => {
           const count = value ? value.count : 0;
           return !value ? "color-empty" : `color-scale-${Math.min(count, 4)}`;

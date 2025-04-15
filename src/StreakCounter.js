@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { DayThemeContext } from "./App";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 
 export default function StreakCounter({ habit, pulse }) {
   const [currentStreak, setCurrentStreak] = useState(0);

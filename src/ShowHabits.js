@@ -78,7 +78,6 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                   habit={habit}
                   dayTheme={dayTheme}
                   habits={habits}
-                  monthsToShow={monthsToShow}
                   startDate={startDate}
                   setMonthsToShow={setMonthsToShow}
                 />

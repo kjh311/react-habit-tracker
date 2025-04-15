@@ -8,7 +8,7 @@ const DeleteHabit = ({ id, habits, setHabits, onDeleteStart }) => {
 
   const deleteHabit = (id) => {
     if (window.confirm("Delete this habit?")) {
-      onDeleteStart?.(); // trigger the animation in ShowHabits
+      onDeleteStart?.();
       setTimeout(() => {
         const updatedHabits = habits.filter((habit) => habit.id !== id);
         setHabits(updatedHabits);
@@ -16,7 +16,7 @@ const DeleteHabit = ({ id, habits, setHabits, onDeleteStart }) => {
           "habitTrackerHabits",
           JSON.stringify(updatedHabits)
         );
-      }, 500); // Wait for animation to finish before deleting
+      }, 500);
     }
   };
 
@@ -30,7 +30,6 @@ const DeleteHabit = ({ id, habits, setHabits, onDeleteStart }) => {
     >
       <CloseIcon
         fontSize="large"
-        // style={{ color: "inherit" }}
         className={`icon transition-colors duration-500 ease-in-out ${
           dayTheme ? "icon-day" : "icon-night"
         }`}

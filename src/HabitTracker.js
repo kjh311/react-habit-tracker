@@ -9,7 +9,7 @@ export default function HabitTracker() {
   const [habits, setHabits] = useState([]);
   const [name, setName] = useContext(NameContext);
   const [loading, setLoading] = useState(true);
-  const [newHabitId, setNewHabitId] = useState(null);
+  //   const [newHabitId, setNewHabitId] = useState(null);
 
   return (
     <div>
@@ -27,7 +27,7 @@ export default function HabitTracker() {
           habits={habits}
           setHabits={setHabits}
           loading={loading}
-          setNewHabitId={setNewHabitId}
+          //   setNewHabitId={setNewHabitId}
         />
       )}
 

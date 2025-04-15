@@ -205,3 +205,12 @@ svg.react-calendar-heatmap {
 .react-calendar-heatmap .color-gitlab-4 {
   fill: #254e77;
 }
+
+.react-calendar-heatmap rect {
+  outline: none;
+}
+
+.react-calendar-heatmap rect:hover {
+  stroke: black;
+  stroke-width: 2px;
+}

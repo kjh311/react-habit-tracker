@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 
 export default function GetWindowSize({ setMonthsToShow, setWidth }) {
-  //   const [windowSize, setWindowSize] = useState(0);
-
   useEffect(() => {
     const handleResize = () => {
       let screenWidth = window.innerWidth;

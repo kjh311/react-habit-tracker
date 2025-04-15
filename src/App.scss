@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 @use './variables.scss';
 
 @tailwind base;
@@ -5,19 +12,128 @@
 @tailwind utilities;
 
 
+/* ANIMATIONS */
+/* Fade-in animation */
+.fade-in {
+  -webkit-animation: fadeIn 1s ease-in-out;
+          animation: fadeIn 1s ease-in-out;
+}
 
-// html, body {
-//   min-height: 100vh;
-//   // margin: 0;
-//   // display: flex;
-//   // flex-direction: column;
-// }
+.animate-pulse {
+  -webkit-animation: pulse 0.4s ease-in-out;
+          animation: pulse 0.4s ease-in-out;
+}
+
+.habit-fade-in {
+  -webkit-animation: fadeInScale 0.6s ease-in-out;
+          animation: fadeInScale 0.6s ease-in-out;
+}
+
+/* Keyframes for the fade-in effect */
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes floatUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%) translateY(20px);
+            transform: translateX(-50%) translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: translateX(-50%) translateY(-20px);
+            transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0);
+  }
+}
+@keyframes floatUp {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%) translateY(20px);
+            transform: translateX(-50%) translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: translateX(-50%) translateY(-20px);
+            transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0);
+  }
+}
+
+@-webkit-keyframes pulse {
+  0%, 100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+@keyframes pulse {
+  0%, 100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+}
+
+
+/* STYLES */
 
 .App {
-  /* text-align: center; */
   min-height: 100vh;
   position: relative;
-  // flex: 1;
   padding-bottom: 70px;
   @include variables.poetsen;
 }
@@ -27,7 +143,6 @@
   border-radius: 20px;
   margin: 10px auto;
   padding: 10px;
-  /* margin-bottom: 5px; */
   position: relative;
 }
 
@@ -57,9 +172,6 @@
   border-bottom: 2px solid white;
 }
 
-.navbar{
-  // box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
-}
 
 .footer-day{
   border-top: 2px solid black;
@@ -67,14 +179,6 @@
 
 .footer-night{
   border-top: 2px solid white;
-}
-
-.icon {
-  /* fill: yellow; */
-  /* width: 40px; */
-  /* right: 20px;
-  top: 7px;
-  position: absolute; */
 }
 
 .iconButton {
@@ -126,9 +230,12 @@
   background-color: variables.$day-theme4;
   color: black;
   border: 2px solid black;
+  -webkit-transition: all;
+  -o-transition: all;
   transition: all;
-  transition-duration: 500ms;
-  
+  -webkit-transition-duration: 500ms;
+       -o-transition-duration: 500ms;
+          transition-duration: 500ms;
 }
 
 .day-button:hover {
@@ -142,25 +249,59 @@
   color: white;
 }
 
-.day-button:active {
-  // background-color: variables.$day-theme4;
-  // scale: 1; 
-  // transition: all;
-  // transition-duration: 500ms;
-}
-
 
 .night-button:hover {
   background-color: variables.$night-theme6;
   color: black;
 }
 
+.input-day::-webkit-input-placeholder {
+  background-color: white;
+  color: variables.$day-theme6;
+  opacity: 1;
+  -webkit-transition: all;
+  transition: all;
+  -webkit-transition-duration: 500ms;
+          transition-duration: 500ms;
+}
+
+.input-day::-moz-placeholder {
+  background-color: white;
+  color: variables.$day-theme6;
+  opacity: 1;
+  -moz-transition: all;
+  transition: all;
+  transition-duration: 500ms;
+}
+
+.input-day:-ms-input-placeholder {
+  background-color: white;
+  color: variables.$day-theme6;
+  opacity: 1;
+  -ms-transition: all;
+  transition: all;
+  transition-duration: 500ms;
+}
+
+.input-day::-ms-input-placeholder {
+  background-color: white;
+  color: variables.$day-theme6;
+  opacity: 1;
+  -ms-transition: all;
+  transition: all;
+  transition-duration: 500ms;
+}
+
 .input-day::placeholder {
   background-color: white;
   color: variables.$day-theme6;
   opacity: 1;
+  -webkit-transition: all;
+  -o-transition: all;
   transition: all;
-  transition-duration: 500ms;
+  -webkit-transition-duration: 500ms;
+       -o-transition-duration: 500ms;
+          transition-duration: 500ms;
 }
 
 .input-day {
@@ -168,14 +309,55 @@
   color: variables.$day-theme6;
   opacity: 1;
   border: 2px solid black;
+  -webkit-transition: all;
+  -o-transition: all;
   transition: all;
-  transition-duration: 500ms;
+  -webkit-transition-duration: 500ms;
+       -o-transition-duration: 500ms;
+          transition-duration: 500ms;
 }
 
 .input-night {
   color: white;
   background-color: variables.$night-theme6;
   border: 2px solid white;
+  -webkit-transition: all;
+  -o-transition: all;
+  transition: all;
+  -webkit-transition-duration: 500ms;
+       -o-transition-duration: 500ms;
+          transition-duration: 500ms;
+}
+
+.input-night::-webkit-input-placeholder {
+  color: white;
+  background-color: variables.$night-theme6;
+  -webkit-transition: all;
+  transition: all;
+  -webkit-transition-duration: 500ms;
+          transition-duration: 500ms;
+}
+
+.input-night::-moz-placeholder {
+  color: white;
+  background-color: variables.$night-theme6;
+  -moz-transition: all;
+  transition: all;
+  transition-duration: 500ms;
+}
+
+.input-night:-ms-input-placeholder {
+  color: white;
+  background-color: variables.$night-theme6;
+  -ms-transition: all;
+  transition: all;
+  transition-duration: 500ms;
+}
+
+.input-night::-ms-input-placeholder {
+  color: white;
+  background-color: variables.$night-theme6;
+  -ms-transition: all;
   transition: all;
   transition-duration: 500ms;
 }
@@ -183,8 +365,12 @@
 .input-night::placeholder {
   color: white;
   background-color: variables.$night-theme6;
+  -webkit-transition: all;
+  -o-transition: all;
   transition: all;
-  transition-duration: 500ms;
+  -webkit-transition-duration: 500ms;
+       -o-transition-duration: 500ms;
+          transition-duration: 500ms;
 }
 
 .nav-title{
@@ -215,52 +401,42 @@
 
 .link{
   text-decoration: underline;
-  // color: $
 }
 
-.show-habits{
-  // min-height: 100%;
-}
 .footer{
   position: absolute;
   bottom: 0;
   width: 100%;
-  // padding-bottom: 20px;
 }
 
 .habit-fade-out {
   opacity: 0;
-  transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+      -ms-transform: scale(0.95);
+          transform: scale(0.95);
+  -webkit-transition: opacity 500ms ease-out, -webkit-transform 500ms ease-out;
+  transition: opacity 500ms ease-out, -webkit-transform 500ms ease-out;
+  -o-transition: opacity 500ms ease-out, transform 500ms ease-out;
   transition: opacity 500ms ease-out, transform 500ms ease-out;
+  transition: opacity 500ms ease-out, transform 500ms ease-out, -webkit-transform 500ms ease-out;
   will-change: opacity, transform;
 }
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.2);
-  }
-}
-
-.animate-pulse {
-  animation: pulse 0.4s ease-in-out;
-}
-
 
 .floating-message {
   position: absolute;
   bottom: 10%;
   left: 50%;
-  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
   
   color: white;
   padding: 10px 20px;
   border-radius: 25px;
   font-size: 16px;
   font-weight: bold;
-  animation: floatUp 2s ease-in-out forwards;
+  -webkit-animation: floatUp 2s ease-in-out forwards;
+          animation: floatUp 2s ease-in-out forwards;
 }
 
 .floating-message-day{
@@ -271,87 +447,23 @@
   background-color: variables.$night-theme3;
 }
 
-@keyframes floatUp {
-  0% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(20px);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(-50%) translateY(-20px);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-/* Fade-in animation */
-.fade-in {
-  animation: fadeIn 1s ease-in-out;
-}
-
-/* Keyframes for the fade-in effect */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-
-.habit-fade-in {
-  animation: fadeInScale 0.6s ease-in-out;
-}
-
-@keyframes fadeInScale {
-  0% {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.react-calendar-heatmap-cell {
-  position: relative;
-  display: inline-block;
-}
-
-.react-calendar-heatmap-cell::after {
-  content: attr(data-tooltip); /* Pull content from the data-tooltip attribute */
-  position: absolute;
-  bottom: 100%; /* Place the tooltip above the cell */
-  left: 50%; /* Center horizontally */
-  transform: translateX(-50%); /* Fine-tune the centering */
-  background-color: rgba(0, 0, 0, 0.75);
-  color: white;
-  padding: 5px;
-  border-radius: 5px;
-  font-size: 12px;
-  visibility: hidden; /* Initially hidden */
-  opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.react-calendar-heatmap-cell:hover::after {
-  visibility: visible; /* Tooltip becomes visible on hover */
-  opacity: 1; /* Fade in */
-}
-
 .month-label-day{
+  -webkit-transition: all;
+  -o-transition: all;
   transition: all;
-  transition-duration: 500;
+  -webkit-transition-duration: 500;
+       -o-transition-duration: 500;
+          transition-duration: 500;
   fill: black !important;
 }
 
 .month-label-night{
+  -webkit-transition: all;
+  -o-transition: all;
   transition: all;
-  transition-duration: 500;
+  -webkit-transition-duration: 500;
+       -o-transition-duration: 500;
+          transition-duration: 500;
   fill: white !important;
 }
 
@@ -360,17 +472,24 @@
   top: 0.5rem !important;
   right: 0.5rem !important;
   z-index: 10 !important;
-  // padding: 10px;
   background-color: rgba(0,0,0, 0) !important;
+  -webkit-transition: all !important;
+  -o-transition: all !important;
   transition: all !important;
-  transition-duration: 200ms !important;
+  -webkit-transition-duration: 200ms !important;
+       -o-transition-duration: 200ms !important;
+          transition-duration: 200ms !important;
   scale: 1
   
 }
 
 .deleteHabit-hover:hover{
+  -webkit-transition: all !important;
+  -o-transition: all !important;
   transition: all !important;
-  transition-duration: 200ms !important;
+  -webkit-transition-duration: 200ms !important;
+       -o-transition-duration: 200ms !important;
+          transition-duration: 200ms !important;
   scale: 1.2;
 }
 
@@ -390,27 +509,32 @@
   fill: variables.$night-theme1 !important;
 }
 
-.icon:hover{
-  // border-radius: 50% !important;
-  
-}
-
 .button{
+  -webkit-transition: all !important;
+  -o-transition: all !important;
   transition: all !important;
-  transition-duration: 200ms !important;
+  -webkit-transition-duration: 200ms !important;
+       -o-transition-duration: 200ms !important;
+          transition-duration: 200ms !important;
   scale: 1;
 }
 
 .button-hover:hover{
+  -webkit-transition: all !important;
+  -o-transition: all !important;
   transition: all !important;
-  transition-duration: 200ms !important;
+  -webkit-transition-duration: 200ms !important;
+       -o-transition-duration: 200ms !important;
+          transition-duration: 200ms !important;
   scale: 1.08;
-  box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
+          box-shadow: 10px 10px 10px rgba(0,0,0,0.5);
 }
 
 .button:active{
   scale: 1;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+          box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
 }
 
 .react-calendar-heatmap{
@@ -419,21 +543,11 @@
 }
 
 rect{
-  // cursor: pointer;
-  // pointer-events: none;
+  -webkit-user-select: none !important;
+     -moz-user-select: none !important;
+      -ms-user-select: none !important;
+          user-select: none !important;
 }
-
-
-
-// .tooltip {
-//   position: absolute;
-//   background-color: black;
-//   color: white;
-//   padding: 5px 10px;
-//   border-radius: 5px;
-//   font-size: 12px;
-//   z-index: 100;
-// }
 
 .tooltip-show{
   display: inline;;

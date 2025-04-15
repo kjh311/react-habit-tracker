@@ -7,7 +7,7 @@ export default function AddUserHabits({
   habits,
   setHabits,
   loading,
-  setNewHabitId,
+  //   setNewHabitId,
 }) {
   const [habitInput, setHabitInput] = useState("");
   const [dayTheme] = useContext(DayThemeContext);
@@ -28,7 +28,7 @@ export default function AddUserHabits({
 
     localStorage.setItem("habitTrackerHabits", JSON.stringify(updatedHabits));
     setHabits(updatedHabits);
-    setNewHabitId(newHabit.id);
+    // setNewHabitId(newHabit.id);
     setHabitInput("");
     setHabitAdded(true);
 
