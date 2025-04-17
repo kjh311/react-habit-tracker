@@ -8,6 +8,7 @@ export default function Navbar() {
   const [dayTheme, setDayTheme] = useContext(DayThemeContext);
 
   const handleThemeToggle = () => {
+    
     setDayTheme(!dayTheme);
   };
 

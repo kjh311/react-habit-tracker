@@ -170,7 +170,7 @@ svg.react-calendar-heatmap {
    * Github color scale
    */
 
-.react-calendar-heatmap .color-github-0 {
+/* .react-calendar-heatmap .color-github-0 {
   fill: #eeeeee;
 }
 .react-calendar-heatmap .color-github-1 {
@@ -184,13 +184,13 @@ svg.react-calendar-heatmap {
 }
 .react-calendar-heatmap .color-github-4 {
   fill: #1e6823;
-}
+} */
 
 /*
    * Gitlab color scale
    */
 
-.react-calendar-heatmap .color-gitlab-0 {
+/* .react-calendar-heatmap .color-gitlab-0 {
   fill: #ededed;
 }
 .react-calendar-heatmap .color-gitlab-1 {
@@ -204,7 +204,7 @@ svg.react-calendar-heatmap {
 }
 .react-calendar-heatmap .color-gitlab-4 {
   fill: #254e77;
-}
+} */
 
 .react-calendar-heatmap rect {
   outline: none;

@@ -18,6 +18,9 @@ const DeleteHabit = ({ id, habits, setHabits, onDeleteStart }) => {
         );
       }, 500);
     }
+    if (habits.length === 0) {
+      window.scrollTo(0, 0);
+    }
   };
 
   return (

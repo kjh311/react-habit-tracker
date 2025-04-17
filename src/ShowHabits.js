@@ -61,6 +61,7 @@ const ShowHabits = ({ habits, loading, setHabits, newHabitId }) => {
                   id={habit.id}
                   habits={habits}
                   setHabits={setHabits}
+
                   //   onDeleteStart={() => setDeletingHabitId(habit.id)}
                 />
 
