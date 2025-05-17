@@ -6,7 +6,7 @@ const Input = ({ placeholder, onChange, value, maxLength, minLength }) => {
 
   return (
     <input
-      className={`transition-all duration-500 border rounded p-2 m-2 text-center ${
+      className={`transition-all duration-500 border rounded sm:p-2 sm:m-2 p-0 m-0 text-center ${
         dayTheme ? "input-day" : "input-night"
       }`}
       type="text"

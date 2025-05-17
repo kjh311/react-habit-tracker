@@ -8,7 +8,6 @@ export default function Navbar() {
   const [dayTheme, setDayTheme] = useContext(DayThemeContext);
 
   const handleThemeToggle = () => {
-    
     setDayTheme(!dayTheme);
   };
 
@@ -36,7 +35,7 @@ export default function Navbar() {
       </button>
 
       <h1
-        className={`text-lg text-bold nav-title `} // Apply the fade-in class conditionally
+        className={`  text-bold nav-title `} // Apply the fade-in class conditionally
       >
         {name
           ? `Welcome to Habit Tracker, ${name}!`
